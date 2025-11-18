@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SCBNO.S24.SCM.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SCBNO.S24.SCM.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfCompetitionSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompetitionSet" nillable="true" type="tns:CompetitionSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompetitionSet" nillable="true" type="tns:ArrayOfCompetitionSet" />
+  <xs:complexType name="CompetitionSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompetitionType" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DisplayDateEnd" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DisplayDateStart" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DisplayDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayImageUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayMyRanking" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayNumberOfHighlighedSellers" type="xs:int" />
+      <xs:element minOccurs="0" name="DisplaySalespersonsWithZeroPoints" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageBase64" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IncludeLBFSalespersonsOnly" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IncludeSalesFromDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IncludeSalesToDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVDealerGroupSet" nillable="true" type="tns:ArrayOfPVDealerGroupSet" />
+      <xs:element minOccurs="0" name="PVDealerOverrideSet" nillable="true" type="tns:ArrayOfPVDealerSet" />
+      <xs:element minOccurs="0" name="PVDealerSet" nillable="true" type="tns:ArrayOfPVDealerSet" />
+      <xs:element minOccurs="0" name="PVKeyAccountManagerSet" nillable="true" type="tns:ArrayOfPVKeyAccountManagerSet" />
+      <xs:element minOccurs="0" name="PVObjectMakeSet" nillable="true" type="tns:ArrayOfPVObjectMakeSet" />
+      <xs:element minOccurs="0" name="PVObjectModelSet" nillable="true" type="tns:ArrayOfPVObjectModelSet" />
+      <xs:element minOccurs="0" name="PVObjectStateSet" nillable="true" type="tns:ArrayOfPVObjectStateSet" />
+      <xs:element minOccurs="0" name="PVProductAgreementSet" nillable="true" type="tns:ArrayOfPVProductAgreementSet" />
+      <xs:element minOccurs="0" name="PVSalespersonDealerSet" nillable="true" type="tns:ArrayOfPVSalespersonDealerSet" />
+      <xs:element minOccurs="0" name="PointsBoostAmount" type="xs:int" />
+      <xs:element minOccurs="0" name="PointsPerBoostAmount" type="xs:int" />
+      <xs:element minOccurs="0" name="PointsPerLBF" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PointsPerPaidCase" type="xs:int" />
+      <xs:element minOccurs="0" name="SalespersonPointCorrectionSet" nillable="true" type="tns:ArrayOfSalespersonPointCorrectionSet" />
+      <xs:element minOccurs="0" name="SantanderDistrictSet" nillable="true" type="tns:ArrayOfSantanderDistrictSet" />
+      <xs:element minOccurs="0" name="SantanderRegionSet" nillable="true" type="tns:ArrayOfSantanderRegionSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompetitionSet" nillable="true" type="tns:CompetitionSet" />
+  <xs:complexType name="ArrayOfPVDealerGroupSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PVDealerGroupSet" nillable="true" type="tns:PVDealerGroupSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPVDealerGroupSet" nillable="true" type="tns:ArrayOfPVDealerGroupSet" />
+  <xs:complexType name="PVDealerGroupSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PVDealerGroupDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVDealerGroupId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVDealerGroupName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVDealerGroupTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVDealerGroupTypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PVDealerGroupSet" nillable="true" type="tns:PVDealerGroupSet" />
+  <xs:complexType name="ArrayOfPVDealerSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PVDealerSet" nillable="true" type="tns:PVDealerSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPVDealerSet" nillable="true" type="tns:ArrayOfPVDealerSet" />
+  <xs:complexType name="PVDealerSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PVDealerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVDealerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVKeyAccountManagerSet_PVKeyAccountManagerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVSalespersonDealerSet" nillable="true" type="tns:ArrayOfPVSalespersonDealerSet" />
+      <xs:element minOccurs="0" name="SantanderDistrictSet_SantanderDistrictID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PVDealerSet" nillable="true" type="tns:PVDealerSet" />
+  <xs:complexType name="ArrayOfPVSalespersonDealerSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PVSalespersonDealerSet" nillable="true" type="tns:PVSalespersonDealerSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPVSalespersonDealerSet" nillable="true" type="tns:ArrayOfPVSalespersonDealerSet" />
+  <xs:complexType name="PVSalespersonDealerSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PVDealer_PVDealerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVSalespersonDealerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVSalespersonDealerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVSalesperson_LBF" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PVUserCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PVSalespersonDealerSet" nillable="true" type="tns:PVSalespersonDealerSet" />
+  <xs:complexType name="ArrayOfPVKeyAccountManagerSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PVKeyAccountManagerSet" nillable="true" type="tns:PVKeyAccountManagerSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPVKeyAccountManagerSet" nillable="true" type="tns:ArrayOfPVKeyAccountManagerSet" />
+  <xs:complexType name="PVKeyAccountManagerSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PVDealerSet" nillable="true" type="tns:ArrayOfPVDealerSet" />
+      <xs:element minOccurs="0" name="PVKeyAccountManagerCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVKeyAccountManagerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVKeyAccountManagerName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PVKeyAccountManagerSet" nillable="true" type="tns:PVKeyAccountManagerSet" />
+  <xs:complexType name="ArrayOfPVObjectMakeSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PVObjectMakeSet" nillable="true" type="tns:PVObjectMakeSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPVObjectMakeSet" nillable="true" type="tns:ArrayOfPVObjectMakeSet" />
+  <xs:complexType name="PVObjectMakeSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PVObjectMakeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVObjectMakeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVObjectModelSet" nillable="true" type="tns:ArrayOfPVObjectModelSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PVObjectMakeSet" nillable="true" type="tns:PVObjectMakeSet" />
+  <xs:complexType name="ArrayOfPVObjectModelSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PVObjectModelSet" nillable="true" type="tns:PVObjectModelSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPVObjectModelSet" nillable="true" type="tns:ArrayOfPVObjectModelSet" />
+  <xs:complexType name="PVObjectModelSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PVObjectMake_PVObjectMakeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVObjectModelId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVObjectModelName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PVObjectModelSet" nillable="true" type="tns:PVObjectModelSet" />
+  <xs:complexType name="ArrayOfPVObjectStateSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PVObjectStateSet" nillable="true" type="tns:PVObjectStateSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPVObjectStateSet" nillable="true" type="tns:ArrayOfPVObjectStateSet" />
+  <xs:complexType name="PVObjectStateSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PVObjectStateSet" nillable="true" type="tns:PVObjectStateSet" />
+  <xs:complexType name="ArrayOfPVProductAgreementSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PVProductAgreementSet" nillable="true" type="tns:PVProductAgreementSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPVProductAgreementSet" nillable="true" type="tns:ArrayOfPVProductAgreementSet" />
+  <xs:complexType name="PVProductAgreementSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PVProductAgreementId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PVProductAgreementName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PVProductAgreementSet" nillable="true" type="tns:PVProductAgreementSet" />
+  <xs:complexType name="ArrayOfSalespersonPointCorrectionSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SalespersonPointCorrectionSet" nillable="true" type="tns:SalespersonPointCorrectionSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSalespersonPointCorrectionSet" nillable="true" type="tns:ArrayOfSalespersonPointCorrectionSet" />
+  <xs:complexType name="SalespersonPointCorrectionSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Competition_Id" type="xs:int" />
+      <xs:element minOccurs="0" name="PVSalespersonDealerSet" nillable="true" type="tns:PVSalespersonDealerSet" />
+      <xs:element minOccurs="0" name="PVSalesperson_PVSalespersonId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PointsCorrection" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SalespersonPointCorrectionSet" nillable="true" type="tns:SalespersonPointCorrectionSet" />
+  <xs:complexType name="ArrayOfSantanderDistrictSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SantanderDistrictSet" nillable="true" type="tns:SantanderDistrictSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSantanderDistrictSet" nillable="true" type="tns:ArrayOfSantanderDistrictSet" />
+  <xs:complexType name="SantanderDistrictSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SantanderDistrict" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SantanderDistrictID" type="xs:int" />
+      <xs:element minOccurs="0" name="SantanderRegionSet_SantanderRegionId" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SantanderDistrictSet" nillable="true" type="tns:SantanderDistrictSet" />
+  <xs:complexType name="ArrayOfSantanderRegionSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SantanderRegionSet" nillable="true" type="tns:SantanderRegionSet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSantanderRegionSet" nillable="true" type="tns:ArrayOfSantanderRegionSet" />
+  <xs:complexType name="SantanderRegionSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SantanderRegion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SantanderRegionID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SantanderRegionSet" nillable="true" type="tns:SantanderRegionSet" />
+  <xs:complexType name="ArrayOfCompetitionType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompetitionType" nillable="true" type="tns:CompetitionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompetitionType" nillable="true" type="tns:ArrayOfCompetitionType" />
+  <xs:complexType name="CompetitionType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompetitionType" nillable="true" type="tns:CompetitionType" />
+  <xs:complexType name="ArrayOfCompetitionRanking">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompetitionRanking" nillable="true" type="tns:CompetitionRanking" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompetitionRanking" nillable="true" type="tns:ArrayOfCompetitionRanking" />
+  <xs:complexType name="CompetitionRanking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Boost_Amount" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CompetitionRanking_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="CompetitionSet_Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Competition_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Count_Annulled_LBF" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Count_LBF" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Count_Payout" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CurrentRank" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="CurrentRankRowNumber" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Dealer_Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Dealer_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Dealer_Orgnr" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ETL_Batch_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ETL_LoadDate_dat" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Include_Sales_From_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Include_Sales_To_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="KAM_Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KAM_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Points" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PointsCorrection" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PreviousDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PreviousPoints" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PreviousRank" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Previous_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Salesperson_Dealer_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Salesperson_Dealer_Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Salesperson_Dealer_Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompetitionRanking" nillable="true" type="tns:CompetitionRanking" />
+</xs:schema>

@@ -1,0 +1,109 @@
+﻿<div id="competitionDetails">
+    <div class="container-fluid competitionHeaderRanking">
+        <div class="row title">
+            <div class="col-xs-12">
+                <h2 id="competitionTitle"></h2>
+            </div>
+        </div>
+
+        <div id="competitionRanking" class="mt">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="rankingText">
+                        <span class="totalPoints"></span>Du har <span class="bold" id="ccrTotalPoints"></span> poeng
+                    </div>
+                    <div class="rankingText">
+                        <span class="currentRank"></span><span class="bold" id="ccrRankingSpot"></span> plass av <span id="ccrRankingTotal"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h3 class="col-xs-12">Poengoversikt</h3>
+            </div>
+            <div class="row">
+                <div class="col-xxs-12 col-xs-4 col-sm-3 col-md-2">
+                    <span class="rowHeader">Tilført volum</span>
+                </div>
+                <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10">
+                    <ul class="list-inline">
+                        <li>Poeng for tilført volum: <span id="ccrTotalVolume" class="bold"></span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contentDivider"></div>
+            <div class="row">
+                <div class="col-xxs-12 col-xs-4 col-sm-3 col-md-2">
+                    <span class="rowHeader">Utbetalte saker</span>
+                </div>
+                <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10">
+                    <ul class="list-inline">
+                        <li>Antall utbetalte saker: <span id="ccrCountPayout" class="bold"></span></li>
+                        <li>Poeng for utbetalte saker: <span id="ccrTotalPaidCases" class="bold"></span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contentDivider"></div>
+            <div class="row">
+                <div class="col-xxs-12 col-xs-4 col-sm-3 col-md-2">
+                    <span class="rowHeader">SAFE</span>
+                </div>
+                <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10">
+                    <ul class="list-inline">
+                        <li>Antall SAFE solgt: <span id="ccrCountLBF" class="bold"></span></li>
+                        <li>Kanselleringer: <span id="ccrTotalAnnulled" class="bold"></span></li>
+                        <li>Poeng for SAFE: <span id="ccrTotalLbf" class="bold"></span></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="pointCorrectionSection" hidden>
+                <div class="contentDivider"></div>
+                <div class="row">
+                    <div class="col-xxs-12 col-xs-4 col-sm-3 col-md-2">
+                        <span class="rowHeader">Poeng korreksjon</span>
+                    </div>
+                    <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10">
+                        <ul class="list-inline">
+                            <li>Antall poeng korrigert: <span id="ccrTotalCorrection" class="bold"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="competitionInformation">
+        <div class="container-fluid">
+            <div class="competitionInformationWrapper">
+                <div class="row">
+                    <div id="competitionImagePanel" class="col-xs-12 col-sm-6">
+                        <img alt="competitionImage" id="competitionImage" src="#" />
+                    </div>
+                    <div id="competitionDescription" class="mb col-xs-12 col-sm-6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 competitionTable">
+        <table id="competitionDataTable" class="salesPersonCompetitionTable">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div id="currentCompetitionEmpty" class="col-xs-12 mb"></div>
+
+</div>
+    
+<div id="loading-pnl"></div>
+
+
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            var competitionDetailsController = new app.cm.CompetitionDetailsController();
+            competitionDetailsController.getCompetitionDetails('competitionDataTable', true);
+        });
+    </script>
+}

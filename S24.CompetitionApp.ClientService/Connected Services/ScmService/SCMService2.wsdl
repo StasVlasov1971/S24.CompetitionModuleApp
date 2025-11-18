@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SCMService2" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="CustomBinding_ISCMService2_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://doslaps124/SCBNO.S24.SCMService/SCMService2.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://doslaps124/SCBNO.S24.SCMService/SCMService2.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://doslaps124/SCBNO.S24.SCMService/SCMService2.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SCBNO.S24.SCM.Models" />
+      <xsd:import schemaLocation="http://doslaps124/SCBNO.S24.SCMService/SCMService2.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISCMService2_GetAllCompetitions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompetitions" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllCompetitions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompetitionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetCompetitionsForKAM_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompetitionsForKAM" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetCompetitionsForKAM_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompetitionsForKAMResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetCompetitionById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompetitionById" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetCompetitionById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompetitionByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetCompetitionsTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompetitionsTypes" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetCompetitionsTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompetitionsTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetCompetitionsForSalesperson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompetitionsForSalesperson" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetCompetitionsForSalesperson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompetitionsForSalespersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllDealers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDealers" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllDealers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDealersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetDealerById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerById" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetDealerById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetKAMForDealerById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKAMForDealerById" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetKAMForDealerById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKAMForDealerByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_SearchDealerByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDealerByName" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_SearchDealerByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDealerByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllDealerGroups_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDealerGroups" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllDealerGroups_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDealerGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllAgreements_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAgreements" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllAgreements_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAgreementsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllKeyAccountManagers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllKeyAccountManagers" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllKeyAccountManagers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllKeyAccountManagersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetKeyAccountManagerById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKeyAccountManagerById" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetKeyAccountManagerById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKeyAccountManagerByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllSantanderDistricts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSantanderDistricts" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllSantanderDistricts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSantanderDistrictsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetSantanderDistrictByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSantanderDistrictByID" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetSantanderDistrictByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSantanderDistrictByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllSantanderRegions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSantanderRegions" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllSantanderRegions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSantanderRegionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetSantanderRegionById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSantanderRegionById" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetSantanderRegionById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSantanderRegionByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllObjectMakes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllObjectMakes" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllObjectMakes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllObjectMakesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetObjectMakeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetObjectMakeById" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetObjectMakeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetObjectMakeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_SearchObjectMakeByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchObjectMakeByName" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_SearchObjectMakeByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchObjectMakeByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllObjectStates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllObjectStates" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetAllObjectStates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllObjectStatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_CreateCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_CreateCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_DeleteCompetiton_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCompetiton" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_DeleteCompetiton_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCompetitonResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateDealersForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDealersForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateDealersForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDealersForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateDealerOverridesForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDealerOverridesForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateDealerOverridesForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDealerOverridesForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateSalespersonsForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSalespersonsForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateSalespersonsForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSalespersonsForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateSalespersonPointCorrectionsForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSalespersonPointCorrectionsForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateSalespersonPointCorrectionsForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSalespersonPointCorrectionsForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateAgreementsForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAgreementsForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateAgreementsForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAgreementsForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateSantanderRegionsForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSantanderRegionsForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateSantanderRegionsForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSantanderRegionsForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateSantanderDistrictsForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSantanderDistrictsForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateSantanderDistrictsForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSantanderDistrictsForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateKeyAccountManagersForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateKeyAccountManagersForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateKeyAccountManagersForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateKeyAccountManagersForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateDealerGroupsForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDealerGroupsForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateDealerGroupsForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDealerGroupsForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateObjectMakesForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateObjectMakesForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateObjectMakesForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateObjectMakesForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateObjectModelsForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateObjectModelsForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateObjectModelsForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateObjectModelsForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateObjectStatesForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateObjectStatesForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateObjectStatesForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateObjectStatesForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateCacheForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCacheForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_UpdateCacheForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCacheForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetRankingsForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRankingsForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetRankingsForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRankingsForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetSalespersonRankingForCompetition_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalespersonRankingForCompetition" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetSalespersonRankingForCompetition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalespersonRankingForCompetitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetUsersInSharePointGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersInSharePointGroup" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetUsersInSharePointGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersInSharePointGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetPictureByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPictureByName" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetPictureByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPictureByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_AddFollower_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFollower" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_AddFollower_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFollowerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_DeleteFollower_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFollower" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_DeleteFollower_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFollowerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetFollowersForSalesPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFollowersForSalesPerson" />
+  </wsdl:message>
+  <wsdl:message name="ISCMService2_GetFollowersForSalesPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFollowersForSalesPersonResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISCMService2">
+    <wsdl:operation name="GetAllCompetitions">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetAllCompetitions" message="tns:ISCMService2_GetAllCompetitions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetAllCompetitionsResponse" message="tns:ISCMService2_GetAllCompetitions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompetitionsForKAM">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetCompetitionsForKAM" message="tns:ISCMService2_GetCompetitionsForKAM_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetCompetitionsForKAMResponse" message="tns:ISCMService2_GetCompetitionsForKAM_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompetitionById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetCompetitionById" message="tns:ISCMService2_GetCompetitionById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetCompetitionByIdResponse" message="tns:ISCMService2_GetCompetitionById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompetitionsTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetCompetitionsTypes" message="tns:ISCMService2_GetCompetitionsTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetCompetitionsTypesResponse" message="tns:ISCMService2_GetCompetitionsTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompetitionsForSalesperson">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetCompetitionsForSalesperson" message="tns:ISCMService2_GetCompetitionsForSalesperson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetCompetitionsForSalespersonResponse" message="tns:ISCMService2_GetCompetitionsForSalesperson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDealers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetAllDealers" message="tns:ISCMService2_GetAllDealers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetAllDealersResponse" message="tns:ISCMService2_GetAllDealers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealerById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetDealerById" message="tns:ISCMService2_GetDealerById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetDealerByIdResponse" message="tns:ISCMService2_GetDealerById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKAMForDealerById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetKAMForDealerById" message="tns:ISCMService2_GetKAMForDealerById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetKAMForDealerByIdResponse" message="tns:ISCMService2_GetKAMForDealerById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDealerByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/SearchDealerByName" message="tns:ISCMService2_SearchDealerByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/SearchDealerByNameResponse" message="tns:ISCMService2_SearchDealerByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDealerGroups">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetAllDealerGroups" message="tns:ISCMService2_GetAllDealerGroups_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetAllDealerGroupsResponse" message="tns:ISCMService2_GetAllDealerGroups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAgreements">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetAllAgreements" message="tns:ISCMService2_GetAllAgreements_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetAllAgreementsResponse" message="tns:ISCMService2_GetAllAgreements_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllKeyAccountManagers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetAllKeyAccountManagers" message="tns:ISCMService2_GetAllKeyAccountManagers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetAllKeyAccountManagersResponse" message="tns:ISCMService2_GetAllKeyAccountManagers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKeyAccountManagerById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetKeyAccountManagerById" message="tns:ISCMService2_GetKeyAccountManagerById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetKeyAccountManagerByIdResponse" message="tns:ISCMService2_GetKeyAccountManagerById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSantanderDistricts">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetAllSantanderDistricts" message="tns:ISCMService2_GetAllSantanderDistricts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetAllSantanderDistrictsResponse" message="tns:ISCMService2_GetAllSantanderDistricts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSantanderDistrictByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetSantanderDistrictByID" message="tns:ISCMService2_GetSantanderDistrictByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetSantanderDistrictByIDResponse" message="tns:ISCMService2_GetSantanderDistrictByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSantanderRegions">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetAllSantanderRegions" message="tns:ISCMService2_GetAllSantanderRegions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetAllSantanderRegionsResponse" message="tns:ISCMService2_GetAllSantanderRegions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSantanderRegionById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetSantanderRegionById" message="tns:ISCMService2_GetSantanderRegionById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetSantanderRegionByIdResponse" message="tns:ISCMService2_GetSantanderRegionById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllObjectMakes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetAllObjectMakes" message="tns:ISCMService2_GetAllObjectMakes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetAllObjectMakesResponse" message="tns:ISCMService2_GetAllObjectMakes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectMakeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetObjectMakeById" message="tns:ISCMService2_GetObjectMakeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetObjectMakeByIdResponse" message="tns:ISCMService2_GetObjectMakeById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchObjectMakeByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/SearchObjectMakeByName" message="tns:ISCMService2_SearchObjectMakeByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/SearchObjectMakeByNameResponse" message="tns:ISCMService2_SearchObjectMakeByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllObjectStates">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetAllObjectStates" message="tns:ISCMService2_GetAllObjectStates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetAllObjectStatesResponse" message="tns:ISCMService2_GetAllObjectStates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/CreateCompetition" message="tns:ISCMService2_CreateCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/CreateCompetitionResponse" message="tns:ISCMService2_CreateCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateCompetition" message="tns:ISCMService2_UpdateCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateCompetitionResponse" message="tns:ISCMService2_UpdateCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompetiton">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/DeleteCompetiton" message="tns:ISCMService2_DeleteCompetiton_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/DeleteCompetitonResponse" message="tns:ISCMService2_DeleteCompetiton_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDealersForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateDealersForCompetition" message="tns:ISCMService2_UpdateDealersForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateDealersForCompetitionResponse" message="tns:ISCMService2_UpdateDealersForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDealerOverridesForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateDealerOverridesForCompetition" message="tns:ISCMService2_UpdateDealerOverridesForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateDealerOverridesForCompetitionResponse" message="tns:ISCMService2_UpdateDealerOverridesForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSalespersonsForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateSalespersonsForCompetition" message="tns:ISCMService2_UpdateSalespersonsForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateSalespersonsForCompetitionResponse" message="tns:ISCMService2_UpdateSalespersonsForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSalespersonPointCorrectionsForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateSalespersonPointCorrectionsForCompetition" message="tns:ISCMService2_UpdateSalespersonPointCorrectionsForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateSalespersonPointCorrectionsForCompetitionResponse" message="tns:ISCMService2_UpdateSalespersonPointCorrectionsForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAgreementsForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateAgreementsForCompetition" message="tns:ISCMService2_UpdateAgreementsForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateAgreementsForCompetitionResponse" message="tns:ISCMService2_UpdateAgreementsForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSantanderRegionsForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateSantanderRegionsForCompetition" message="tns:ISCMService2_UpdateSantanderRegionsForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateSantanderRegionsForCompetitionResponse" message="tns:ISCMService2_UpdateSantanderRegionsForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSantanderDistrictsForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateSantanderDistrictsForCompetition" message="tns:ISCMService2_UpdateSantanderDistrictsForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateSantanderDistrictsForCompetitionResponse" message="tns:ISCMService2_UpdateSantanderDistrictsForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateKeyAccountManagersForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateKeyAccountManagersForCompetition" message="tns:ISCMService2_UpdateKeyAccountManagersForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateKeyAccountManagersForCompetitionResponse" message="tns:ISCMService2_UpdateKeyAccountManagersForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDealerGroupsForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateDealerGroupsForCompetition" message="tns:ISCMService2_UpdateDealerGroupsForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateDealerGroupsForCompetitionResponse" message="tns:ISCMService2_UpdateDealerGroupsForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateObjectMakesForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateObjectMakesForCompetition" message="tns:ISCMService2_UpdateObjectMakesForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateObjectMakesForCompetitionResponse" message="tns:ISCMService2_UpdateObjectMakesForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateObjectModelsForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateObjectModelsForCompetition" message="tns:ISCMService2_UpdateObjectModelsForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateObjectModelsForCompetitionResponse" message="tns:ISCMService2_UpdateObjectModelsForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateObjectStatesForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateObjectStatesForCompetition" message="tns:ISCMService2_UpdateObjectStatesForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateObjectStatesForCompetitionResponse" message="tns:ISCMService2_UpdateObjectStatesForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCacheForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/UpdateCacheForCompetition" message="tns:ISCMService2_UpdateCacheForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/UpdateCacheForCompetitionResponse" message="tns:ISCMService2_UpdateCacheForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRankingsForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetRankingsForCompetition" message="tns:ISCMService2_GetRankingsForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetRankingsForCompetitionResponse" message="tns:ISCMService2_GetRankingsForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSalespersonRankingForCompetition">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetSalespersonRankingForCompetition" message="tns:ISCMService2_GetSalespersonRankingForCompetition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetSalespersonRankingForCompetitionResponse" message="tns:ISCMService2_GetSalespersonRankingForCompetition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersInSharePointGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetUsersInSharePointGroup" message="tns:ISCMService2_GetUsersInSharePointGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetUsersInSharePointGroupResponse" message="tns:ISCMService2_GetUsersInSharePointGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPictureByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetPictureByName" message="tns:ISCMService2_GetPictureByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetPictureByNameResponse" message="tns:ISCMService2_GetPictureByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFollower">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/AddFollower" message="tns:ISCMService2_AddFollower_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/AddFollowerResponse" message="tns:ISCMService2_AddFollower_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFollower">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/DeleteFollower" message="tns:ISCMService2_DeleteFollower_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/DeleteFollowerResponse" message="tns:ISCMService2_DeleteFollower_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFollowersForSalesPerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISCMService2/GetFollowersForSalesPerson" message="tns:ISCMService2_GetFollowersForSalesPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISCMService2/GetFollowersForSalesPersonResponse" message="tns:ISCMService2_GetFollowersForSalesPerson_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomBinding_ISCMService2" type="tns:ISCMService2">
+    <wsp:PolicyReference URI="#CustomBinding_ISCMService2_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllCompetitions">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetAllCompetitions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompetitionsForKAM">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetCompetitionsForKAM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompetitionById">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetCompetitionById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompetitionsTypes">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetCompetitionsTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompetitionsForSalesperson">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetCompetitionsForSalesperson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDealers">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetAllDealers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDealerById">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetDealerById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKAMForDealerById">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetKAMForDealerById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchDealerByName">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/SearchDealerByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDealerGroups">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetAllDealerGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAgreements">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetAllAgreements" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllKeyAccountManagers">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetAllKeyAccountManagers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKeyAccountManagerById">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetKeyAccountManagerById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSantanderDistricts">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetAllSantanderDistricts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSantanderDistrictByID">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetSantanderDistrictByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSantanderRegions">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetAllSantanderRegions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSantanderRegionById">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetSantanderRegionById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllObjectMakes">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetAllObjectMakes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectMakeById">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetObjectMakeById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchObjectMakeByName">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/SearchObjectMakeByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllObjectStates">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetAllObjectStates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/CreateCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompetiton">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/DeleteCompetiton" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDealersForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateDealersForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDealerOverridesForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateDealerOverridesForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSalespersonsForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateSalespersonsForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSalespersonPointCorrectionsForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateSalespersonPointCorrectionsForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAgreementsForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateAgreementsForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSantanderRegionsForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateSantanderRegionsForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSantanderDistrictsForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateSantanderDistrictsForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateKeyAccountManagersForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateKeyAccountManagersForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDealerGroupsForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateDealerGroupsForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateObjectMakesForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateObjectMakesForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateObjectModelsForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateObjectModelsForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateObjectStatesForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateObjectStatesForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCacheForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/UpdateCacheForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRankingsForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetRankingsForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSalespersonRankingForCompetition">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetSalespersonRankingForCompetition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersInSharePointGroup">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetUsersInSharePointGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPictureByName">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetPictureByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFollower">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/AddFollower" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFollower">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/DeleteFollower" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFollowersForSalesPerson">
+      <soap12:operation soapAction="http://tempuri.org/ISCMService2/GetFollowersForSalesPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SCMService2">
+    <wsdl:port name="CustomBinding_ISCMService2" binding="tns:CustomBinding_ISCMService2">
+      <soap12:address location="http://doslaps124/SCBNO.S24.SCMService/SCMService2.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://doslaps124/SCBNO.S24.SCMService/SCMService2.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,99 @@
+@model S24.CompetitionApp.Models.CompetitionSummaryViewModel
+
+@if (Model.CompetitionsFound)
+{
+    const string competitionIdPrefix = "ItemID=";
+    const string competitionUrl = "/no/konkurranselister?ItemID=";
+    <div id="s24PlaceHolderMain">
+        <div id="compSummaryViewContainer" class="HIDEFROMBOS24">
+            <div class="col-xs-12 titleContainer">
+                <h3 id="compSummaryViewTitle">@Model.FirstCompetitionTitle</h3>
+            </div>
+            @if (!String.IsNullOrEmpty(Model.FirstCompetitionPoints) &&
+                    !String.IsNullOrEmpty(Model.FirstCompetitionRanking))
+            {
+                <div class="col-xs-12">
+                    <span class="totalPoints" id="SalesPersonTotalPoints">
+                        Du har @Model.FirstCompetitionPoints poeng
+                    </span>
+                </div>
+                <div class="col-xs-12 currentRankContainer">
+                    <span class="currentRank" id="SalesPersonRank">
+                        @Model.FirstCompetitionRanking. plass
+                    </span>
+                </div>
+            }
+            <div class="col-xs-12">
+                <ul id="compSummaryViewList">
+                    <li>
+                        <div class='col-xxs-3 col-xs-3 col-sm-3 col-md-3 col-lg-3'>
+                            <span>Plass</span>
+                        </div>
+                        <div class='col-xxs-6 col-xs-5 col-sm-5 col-md-6 col-lg-6'>
+                            <span>Navn</span>
+                        </div>
+                        <div class='col-xxs-3 col-xs-4 col-sm-4 col-md-3 col-lg-3'>
+                            <span>Poeng</span>
+                        </div>
+                    </li>
+                    @foreach (var rank in Model.FirstCompetitionRankingsRankList)
+                    {
+                        var isRowCurrentSalesPerson = rank.Salesperson_Dealer_Code.Trim() == Model.SalesPersonUserCode;
+                        <li @(isRowCurrentSalesPerson ? "style=font-weight:bold" : "")>
+                            <div class='col-xxs-3 col-xs-3 col-sm-3 col-md-3 col-lg-3'>
+                                <span title='@rank.CurrentRank'>
+                                    @rank.CurrentRank
+                                </span>
+                            </div>
+                            <div class='col-xxs-6 col-xs-5 col-sm-5 col-md-6 col-lg-6'>
+                                <span title='@rank.Salesperson_Dealer_Name'>
+                                    @rank.Salesperson_Dealer_Name
+                                </span>
+                            </div>
+                            <div class='col-xxs-3 col-xs-4 col-sm-4 col-md-3 col-lg-3'>
+                                <span title='@rank.Points'>
+                                    @rank.Points
+                                </span>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="col-xs-12">
+                <a id="compSummaryViewLink" href="@(competitionUrl + Model.FirstCompetitionId)" target="_top">
+                    Se hele listen.
+                </a>
+            </div>
+            <div class="col-xs-12">
+                @if (Model.OtherCompetitions != null && Model.OtherCompetitions.Count > 0)
+                {
+                    <div id="compSummaryViewListOtherContainer">
+                        <h3>Andre konkurranser</h3>
+                        <ul id="compSummaryViewListOther" class="nav-list nav-list--small">
+                            @foreach (var competition in Model.OtherCompetitions)
+                            {
+                                <li><a id='@(competitionIdPrefix + competition.Id)' href='@(competitionUrl + competition.Id)'
+                                        target="_top">@competition.DisplayName</a></li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const isS24 = window.location.origin.includes("s24");
+        if (isS24) {
+            const base = "/Pages/CompetitionDetails.aspx";
+            const firstCompetitionId = '@Model.FirstCompetitionId';
+            document.getElementById("compSummaryViewLink").href = `${base}?ItemID=${firstCompetitionId}`;
+            const parentElement = document.getElementById('compSummaryViewListOther');
+            const anchorElements = parentElement.querySelectorAll('li > a');
+            const otherCompetitions = Array.from(anchorElements);
+            otherCompetitions.forEach((linkElem) => {
+                linkElem.href = `${base}?${linkElem.id}`
+            })
+        }
+    </script>
+}

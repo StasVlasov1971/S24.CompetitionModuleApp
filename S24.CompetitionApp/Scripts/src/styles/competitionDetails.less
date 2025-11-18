@@ -1,0 +1,136 @@
+#competitionDetails {
+    font-family: KievitMedium, Helvetica, sans-serif;
+    display: none;
+
+    .competitionHeaderRanking, .competitionTable {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    #exportToExcelButton {
+        margin-right: 20px;
+    }
+
+    #competitionRanking {
+        display: none; // Hide by default when there is no user information
+        .rankingText {
+            font-size: 26px;
+            border: 1px solid lightgrey;
+            text-align: center;
+            vertical-align: middle;
+            margin-right: 30px;
+            margin-bottom: 20px;
+            padding: 20px 30px 20px 30px;
+            width: fit-content;
+            display: inline-block;
+
+            .totalPoints:before {
+                content: "";
+                background: url(../images/svg/icon-curve.svg) no-repeat;
+                background-size: contain;
+                width: 30px;
+                height: 30px;
+                margin-right: 14px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .currentRank:before {
+                content: "";
+                background: url(../images/svg/icon-trophy.svg) no-repeat;
+                background-size: contain;
+                width: 30px;
+                height: 30px;
+                margin-right: 14px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+
+        .rowHeader {
+            font-size: 19px;
+        }
+
+        .row {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            font-size: 16px;
+            margin-bottom: 0;
+
+            li {
+                padding-left: 0;
+                padding-right: 20px;
+            }
+        }
+
+        .contentDivider {
+            border-bottom: 1px solid lightgrey;
+        }
+
+        @media (max-width: 525px) {
+            .list-inline {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .competitionInformation {
+        background-color: #deedf2;
+        max-width: 100%;
+        margin-top: 45px;
+        margin-bottom: 45px;
+
+        .competitionInformationWrapper {
+            margin: 35px 10px 35px 10px;
+        }
+
+        #competitionDescription {
+            font-size: 17px;
+        }
+
+        #competitionImagePanel {
+            text-align: left;
+            display: none;
+
+            #competitionImage {
+                max-width: 800px !important;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #competitionDescription {
+                margin-top: 25px;
+            }
+        }
+    }
+
+    #competitionDataTable {
+        a {
+            color: black;
+        }
+
+        .follow-icon {
+            margin-right: 16px;
+            color: #ffcc33;
+            cursor: pointer;
+        }
+    }
+
+    .salesPersonCompetitionTable {
+        th:hover {
+            background: none !important;
+        }
+
+        th>.column-header-anchor {
+            cursor: default !important;
+        }
+    }
+
+    .bold {
+        font-family: KievitBold, "Helvetica", sans-serif;
+    }
+}

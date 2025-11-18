@@ -1,0 +1,298 @@
+// Custom
+
+#s24PlaceHolderMain #datepicker__container button {
+    min-width: inherit;
+}
+
+#s24PlaceHolderMain .pika-table abbr {
+    cursor: default;
+}
+
+#s24PlaceHolderMain .styleguide__datepicker {
+    max-width: inherit;
+}
+
+#s24PlaceHolderMain .datepicker__wrap {
+    word-wrap: normal;
+    word-break: normal;
+}
+
+#s24PlaceHolderMain .datepicker__wrap .st1 {
+    fill: #d3d3d3;
+    stroke: #d3d3d3;
+    stroke-width: 0.2997;
+    stroke-miterlimit: 3.9226;
+}
+
+/*!
+* Pikaday
+* Copyright ┬® 2014 David Bushell | BSD & MIT license | http://dbushell.com/
+*/
+
+#s24PlaceHolderMain .pika-single {
+  z-index: 9999;
+  display: block;
+  position: relative;
+  color: #333;
+  background: #fff;
+}
+
+#s24PlaceHolderMain .pika-single:before,
+#s24PlaceHolderMain .pika-single:after {
+  content: " ";
+  display: table;
+}
+
+#s24PlaceHolderMain .pika-single:after {
+  clear: both;
+}
+
+#s24PlaceHolderMain .pika-single {
+  *zoom: 1;
+}
+
+#s24PlaceHolderMain .pika-single.is-hidden {
+  display: none;
+}
+
+#s24PlaceHolderMain .pika-single.is-bound {
+  position: absolute;
+}
+
+#s24PlaceHolderMain .pika-lendar {
+  float: left;
+  border: 1px solid #e9ebe5;
+}
+
+#s24PlaceHolderMain .pika-title {
+  background-color: #e9ebe5;
+  position: relative;
+  text-align: center;
+}
+
+#s24PlaceHolderMain .pika-label {
+  display: inline-block;
+  *display: inline;
+  position: relative;
+  z-index: 9999;
+  overflow: hidden;
+  margin: 0;
+  padding: 7px 3px 0 3px;
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+#s24PlaceHolderMain .pika-title select {
+  cursor: pointer;
+  position: absolute;
+  z-index: 9998;
+  margin: 0;
+  left: 0;
+  top: 5px;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+#s24PlaceHolderMain .pika-prev,
+#s24PlaceHolderMain .pika-next {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  border: 0;
+  padding: 0;
+  width: 20px;
+  height: 30px;
+  /* hide text using text-indent trick, using width value (it's enough) */
+  text-indent: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: transparent;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 75% 75%;
+  opacity: 1;
+  *position: absolute;
+  *top: 0;
+}
+
+#s24PlaceHolderMain .pika-prev:hover,
+#s24PlaceHolderMain .pika-next:hover {
+  opacity: 1;
+}
+
+#s24PlaceHolderMain .pika-prev,
+#s24PlaceHolderMain .is-rtl .pika-next {
+  float: left;
+  *left: 0;
+  position: relative;
+}
+
+#s24PlaceHolderMain .pika-prev::after,
+#s24PlaceHolderMain .is-rtl .pika-next::after {
+  background: url("../images/svg/sml-arrow.svg") no-repeat center center;
+  content: "";
+  display: block;
+  width: 20px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  top: 2px;
+  transform: rotate(180deg);
+}
+
+#s24PlaceHolderMain .pika-next,
+#s24PlaceHolderMain .is-rtl .pika-prev {
+  float: right;
+  *right: 0;
+  position: relative;
+}
+
+#s24PlaceHolderMain .pika-next::after,
+#s24PlaceHolderMain .is-rtl .pika-prev::after {
+  background: url("../images/svg/sml-arrow.svg") no-repeat center center;
+  content: "";
+  display: block;
+  width: 20px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+
+#s24PlaceHolderMain .pika-prev.is-disabled,
+#s24PlaceHolderMain .pika-next.is-disabled {
+  cursor: default;
+  opacity: .2;
+}
+
+#s24PlaceHolderMain .pika-select {
+  display: inline-block;
+  *display: inline;
+}
+
+#s24PlaceHolderMain .pika-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 0;
+  margin: 0;
+}
+
+#s24PlaceHolderMain .pika-table th,
+#s24PlaceHolderMain .pika-table td {
+  padding: 0;
+  border: 0;
+}
+
+#s24PlaceHolderMain .pika-table th {
+  color: #999;
+  font-size: 12px;
+  line-height: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#s24PlaceHolderMain .pika-button {
+  cursor: pointer;
+  display: block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  border: 0;
+  margin: 0;
+  width: 38px;
+  height: 38px;
+  color: #303030;
+  font-size: 17px;
+  line-height: 38px;
+  background: none;
+}
+
+#s24PlaceHolderMain .pika-week {
+  font-size: 11px;
+  color: #999;
+}
+
+#s24PlaceHolderMain .is-today .pika-button {
+  color: #ec0000;
+  font-weight: bold;
+}
+
+#s24PlaceHolderMain .is-selected .pika-button {
+  color: #fff;
+  font-weight: bold;
+  background: #ec0000;
+  border-radius: 50%;
+}
+
+#s24PlaceHolderMain .is-inrange .pika-button {
+  background: #D5E9F7;
+}
+
+#s24PlaceHolderMain .is-startrange .pika-button {
+  color: #fff;
+  background: #6CB31D;
+  box-shadow: none;
+  border-radius: 3px;
+}
+
+#s24PlaceHolderMain .is-endrange .pika-button {
+  color: #fff;
+  background: #33aaff;
+  box-shadow: none;
+  border-radius: 3px;
+}
+
+#s24PlaceHolderMain .is-disabled .pika-button,
+#s24PlaceHolderMain .is-outside-current-month .pika-button {
+  pointer-events: none;
+  cursor: default;
+  color: #999;
+  opacity: .3;
+}
+
+#s24PlaceHolderMain .pika-button:hover {
+  color: #fff;
+  background: #ec0000;
+  box-shadow: none;
+  border-radius: 50%;
+}
+
+#s24PlaceHolderMain .pika-table abbr {
+  border-bottom: none;
+  cursor: help;
+}
+
+#s24PlaceHolderMain .pika-single tr {
+  border: 1px solid #e9ebe5;
+}
+
+#s24PlaceHolderMain .datepicker__toggle {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -10px;
+  fill: #D3D3D3;
+  transition: .1s linear;
+  pointer-events: none;
+}
+
+#s24PlaceHolderMain input:hover~.datepicker__toggle * {
+  fill: #ec0000;
+}
+
+#s24PlaceHolderMain .datepicker__wrap {
+  position: relative;
+}
+
+#s24PlaceHolderMain #datepicker__container {
+  position: absolute;
+  left: 0;
+  top: 60px;
+  z-index: 9;
+}

@@ -1,0 +1,90 @@
+
+#compSummaryViewContainer {
+	#compSummaryViewList {
+		font-size: 14px !important;
+		li {
+			width: 100%;
+			div {
+				padding: 0;
+				margin: 0;
+				span {
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					display: block;
+					overflow: hidden;
+				}
+			}
+		}
+	}
+	.nav-list {
+	  margin-bottom: 58px; 
+	}
+  	.nav-list li {
+    position: relative;
+	border-bottom: 1px solid #c9cac5; 
+	}
+    .nav-list li:hover {
+    	color: red;
+		border-color: #ec0000; 
+	}
+  	.nav-list a {
+		border: none;
+		color: inherit;
+		display: block;
+		text-decoration: none;
+		padding: 5px 29px 5px 0;
+		background: url("../images/svg/sml-arrow.svg") 98% 50% no-repeat;
+		background-size: 29px;
+		transition: none;
+		transition: background-position 0.1s cubic-bezier(0.45, 0.17, 0.48, 0.79); 
+	}
+    .nav-list a:hover {
+	  background-position: 100% 50%; 
+	}
+	.nav-list--small li {
+		font-size: 17px;
+		line-height: 22px; 
+	}
+
+	#compSummaryViewText {
+		margin-top: 10px !important;
+		margin-bottom: 5px !important;
+		font-size: inherit !important;
+	}
+	#compSummaryViewListOtherContainer {
+		margin-top: 20px;
+	}
+	#compSummaryViewLink {
+		margin-bottom: 29px;
+	}
+	.currentRankContainer {
+		margin-bottom: 10px;
+	}
+	.currentRank, .totalPoints {
+		font-weight: bold;
+		font-size: 16px;
+	}
+	.titleContainer {
+		margin-bottom: 10px;
+	}
+
+	.totalPoints:before {
+		content: "";
+		background: url(../images/svg/icon-curve-black.svg) no-repeat;
+		background-size: contain;
+		width: 18px;
+		height: 18px;
+		margin-right: 10px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.currentRank:before {
+		content: "";
+		background: url(../images/svg/icon-trophy-black.svg) no-repeat;
+		background-size: contain;
+		width: 14px;
+		height: 14px;
+		margin-right: 14px;
+		display: inline-block;
+	}
+}

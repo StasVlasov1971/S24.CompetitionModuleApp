@@ -1,0 +1,21 @@
+﻿@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            var allCompetitionsController = new app.cm.AllCompetitionsController();
+            allCompetitionsController.getAllCompetitions('competitionDataTable', "Admin", "GetCompetitions");
+        });
+    </script>
+}
+<div class="allCompetitions">
+    <a id="competitionNew" href="#">Lag ny konkurranse</a>
+    <div id="competitionDataTableWrapper">
+        <table id="competitionDataTable" class="table-hover">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="allCompetitionsErrorContainer"></div>
+
+<div id="loading-pnl"></div>

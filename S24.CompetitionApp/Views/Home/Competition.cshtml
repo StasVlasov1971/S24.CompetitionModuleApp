@@ -1,0 +1,637 @@
+﻿<div id="s24PlaceHolderMain" class="container-fluid">
+    <div id="competitionTabs" class="mb">
+        <ul>
+            <li><a href="#competitionTabs-1">Generelt</a></li>
+            <li><a href="#competitionTabs-2">Filter</a></li>
+            <li><a href="#competitionTabs-3">Objekt</a></li>
+            <li><a href="#competitionTabs-4">Poeng</a></li>
+        </ul>
+        <div id="competitionTabs-1">
+            <section class="section">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3>Generelt</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <label>Navn</label>
+                            <input id="txtName" type="text" />
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label for="ddlCompetitionType">Type</label>
+                            <select id="ddlCompetitionType">
+                                <option value="1">Kampanje</option>
+                                <option value="2">Månedsliste</option>
+                                <option value="3">Årsliste</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <label for="datepicker">Startdato <small>(dd.mm.åååå)</small></label>
+                            <div class="datepicker__wrap styleguide__datepicker">
+                                <input type="tel" id="datepickerStartDate" maxlength="10" data-input-format="date" data-datepicker-end="datepickerEndDate" placeholder="16.05.2016" aria-label="Use the arrow keys to pick a date" />
+                                <svg id="datepicker__toggle" class="datepicker__toggle" xmlns="http://www.w3.org/2000/svg" width="12.993" height="12.993" viewBox="-339 339.66 12.9933 12.9933">
+                                    <path class="st1" d="M-327.454 352.682h-10.128c-.386 0-.724-.144-1.013-.434-.29-.29-.434-.627-.434-1.013v-8.68c0-.406.146-.75.435-1.028.29-.28.627-.42 1.013-.42h.666v1.447h2.315v-1.447h4.195v1.447h2.315v-1.447h.636c.405 0 .748.14 1.028.42.28.28.42.622.42 1.027v8.68c0 .387-.14.725-.42 1.014-.28.29-.623.434-1.028.434m-10.128-7.234v5.787h10.128v-5.787h-10.128m8.826-3.328h-1.013v-2.46h1.014v2.46m-6.51 0h-1.014v-2.46h1.013v2.46"></path>
+                                </svg>
+                                <div id="datepicker__container">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label for="datepicker">Sluttdato <small>(dd.mm.åååå)</small></label>
+                            <div class="datepicker__wrap styleguide__datepicker">
+                                <input type="tel" id="datepickerEndDate" maxlength="10" data-input-format="date" placeholder="16.05.2016" aria-label="Use the arrow keys to pick a date" />
+                                <svg id="datepicker__toggle" class="datepicker__toggle" xmlns="http://www.w3.org/2000/svg" width="12.993" height="12.993" viewBox="-339 339.66 12.9933 12.9933">
+                                    <path class="st1" d="M-327.454 352.682h-10.128c-.386 0-.724-.144-1.013-.434-.29-.29-.434-.627-.434-1.013v-8.68c0-.406.146-.75.435-1.028.29-.28.627-.42 1.013-.42h.666v1.447h2.315v-1.447h4.195v1.447h2.315v-1.447h.636c.405 0 .748.14 1.028.42.28.28.42.622.42 1.027v8.68c0 .387-.14.725-.42 1.014-.28.29-.623.434-1.028.434m-10.128-7.234v5.787h10.128v-5.787h-10.128m8.826-3.328h-1.013v-2.46h1.014v2.46m-6.51 0h-1.014v-2.46h1.013v2.46"></path>
+                                </svg>
+                                <div id="datepicker__container">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt">
+                        <div class="col-xs-12">
+                            <h3>Rangeringslister</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="checkbox">
+                                <input id="chkBoxPosition" name="checkbox" type="checkbox" class="checkbox__input" />
+                                <label for="chkBoxPosition" class="checkbox__label">Vise min posisjon</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="checkbox">
+                                <input id="chkBoxHideSellers" name="checkbox" type="checkbox" class="checkbox__input" />
+                                <label for="chkBoxHideSellers" class="checkbox__label">Skjule selgere med null poeng</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-8">
+                            <label>
+                                Antall selgere i toppliste som vises
+                                <input id="txtSellersCount" type="number" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3>Formattering av konkurranse</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-8">
+                            <label>
+                                Visningstittel
+                                <input id="txtDisplayTitle" type="text" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <label for="datepicker">Visning startdato <small>(dd.mm.åååå)</small></label>
+                            <div class="datepicker__wrap styleguide__datepicker">
+                                <input id="datepickerStartDateDisplay" type="tel" maxlength="10" data-input-format="date" placeholder="16.05.2016" aria-label="Use the arrow keys to pick a date" />
+                                <svg id="datepicker__toggle" class="datepicker__toggle" xmlns="http://www.w3.org/2000/svg" width="12.993" height="12.993" viewBox="-339 339.66 12.9933 12.9933">
+                                    <path class="st1" d="M-327.454 352.682h-10.128c-.386 0-.724-.144-1.013-.434-.29-.29-.434-.627-.434-1.013v-8.68c0-.406.146-.75.435-1.028.29-.28.627-.42 1.013-.42h.666v1.447h2.315v-1.447h4.195v1.447h2.315v-1.447h.636c.405 0 .748.14 1.028.42.28.28.42.622.42 1.027v8.68c0 .387-.14.725-.42 1.014-.28.29-.623.434-1.028.434m-10.128-7.234v5.787h10.128v-5.787h-10.128m8.826-3.328h-1.013v-2.46h1.014v2.46m-6.51 0h-1.014v-2.46h1.013v2.46"></path>
+                                </svg>
+                                <div id="datepicker__container">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label for="datepicker">Visning sluttdato <small>(dd.mm.åååå)</small></label>
+                            <div class="datepicker__wrap styleguide__datepicker">
+                                <input id="datepickerEndDateDisplay" type="tel" maxlength="10" data-input-format="date" placeholder="16.05.2016" aria-label="Use the arrow keys to pick a date" />
+                                <svg id="datepicker__toggle" class="datepicker__toggle" xmlns="http://www.w3.org/2000/svg" width="12.993" height="12.993" viewBox="-339 339.66 12.9933 12.9933">
+                                    <path class="st1" d="M-327.454 352.682h-10.128c-.386 0-.724-.144-1.013-.434-.29-.29-.434-.627-.434-1.013v-8.68c0-.406.146-.75.435-1.028.29-.28.627-.42 1.013-.42h.666v1.447h2.315v-1.447h4.195v1.447h2.315v-1.447h.636c.405 0 .748.14 1.028.42.28.28.42.622.42 1.027v8.68c0 .387-.14.725-.42 1.014-.28.29-.623.434-1.028.434m-10.128-7.234v5.787h10.128v-5.787h-10.128m8.826-3.328h-1.013v-2.46h1.014v2.46m-6.51 0h-1.014v-2.46h1.013v2.46"></path>
+                                </svg>
+                                <div id="datepicker__container">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-8">
+                            <label>
+                                Brødtekst
+                                <textarea id="txtDescription" style="resize:none;"></textarea>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row" style="display: none">
+                        <div class="col-xs-12 col-md-8">
+                            <label>
+                                Visningsbilde
+                                <input id="txtImageUrl" type="text" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>Visningsbilde</label>
+                            <input type="file" name="competitionImage" id="competitionImage" accept="image/png, image/jpeg" />
+                        </div>
+                        <div class="col-xs-12">
+                            <img class="img-preview" id="imagePreview" style="width: 200px;" />
+                        </div>
+                    </div>
+            </section>
+        </div>
+        <div id="competitionTabs-2">
+            <div class="row">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>Selekteringsmuligheter</h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="checkbox">
+                            <input id="chkBoxIncludeOnlySLB" name="checkbox" type="checkbox" class="checkbox__input" />
+                            <label for="chkBoxIncludeOnlySLB" class="checkbox__label">Inkludere kun LBF-selgere</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Avtale</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListAgreementFrom" data-defaultvalue="true" class="sortableListAgreement"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div id="sortableListAgreementButtons" style="height: 250px;">
+                            <div style="text-align: center;"><input type="button" value=">" class="btn btn--small btn--vsmall" data-type="SomeTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value=">>" class="btn btn--small btn--vsmall" data-type="AllTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<" class="btn btn--small btn--vsmall" data-type="SomeFrom"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<<" class="btn btn--small btn--vsmall" data-type="AllFrom"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListAgreementTo" data-defaultvalue="true" class="sortableListAgreement"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Region</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListRegionFrom" data-defaultvalue="true" class="sortableListRegion"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div id="sortableListRegionButtons" style="height: 250px;">
+                            <div style="text-align: center;"><input type="button" value=">" class="btn btn--small btn--vsmall" data-type="SomeTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value=">>" class="btn btn--small btn--vsmall" data-type="AllTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<" class="btn btn--small btn--vsmall" data-type="SomeFrom"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<<" class="btn btn--small btn--vsmall" data-type="AllFrom"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListRegionTo" data-defaultvalue="true" class="sortableListRegion"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>District</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListDistrictFrom" data-defaultvalue="true" class="sortableListDistrict"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div id="sortableListDistrictButtons" style="height: 250px;">
+                            <div style="text-align: center;"><input type="button" value=">" class="btn btn--small btn--vsmall" data-type="SomeTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value=">>" class="btn btn--small btn--vsmall" data-type="AllTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<" class="btn btn--small btn--vsmall" data-type="SomeFrom"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<<" class="btn btn--small btn--vsmall" data-type="AllFrom"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListDistrictTo" data-defaultvalue="true" class="sortableListDistrict"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Markedsansvarlig</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListResponsibleFrom" data-defaultvalue="true" class="sortableListResponsible"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div id="sortableListResponsibleButtons" style="height: 250px;">
+                            <div style="text-align: center;"><input type="button" value=">" class="btn btn--small btn--vsmall" data-type="SomeTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value=">>" class="btn btn--small btn--vsmall" data-type="AllTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<" class="btn btn--small btn--vsmall" data-type="SomeFrom"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<<" class="btn btn--small btn--vsmall" data-type="AllFrom"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListResponsibleTo" data-defaultvalue="true" class="sortableListResponsible"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Forhandler</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListDealerFrom" data-defaultvalue="true" class="sortableListDealer"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div id="sortableListDealerButtons" style="height: 250px;">
+                            <div style="text-align: center;"><input type="button" value=">" class="btn btn--small btn--vsmall" data-type="SomeTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value=">>" class="btn btn--small btn--vsmall" data-type="AllTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<" class="btn btn--small btn--vsmall" data-type="SomeFrom"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<<" class="btn btn--small btn--vsmall" data-type="AllFrom"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListDealerTo" data-defaultvalue="true" class="sortableListDealer"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Overstyr forhandler</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListOverrideDealerFrom" class="sortableListOverrideDealer"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div id="sortableListOverrideDealerButtons" style="height: 250px;">
+                            <div style="text-align: center;"><input type="button" value=">" class="btn btn--small btn--vsmall" data-type="SomeTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value=">>" class="btn btn--small btn--vsmall" data-type="AllTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<" class="btn btn--small btn--vsmall" data-type="SomeFrom"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<<" class="btn btn--small btn--vsmall" data-type="AllFrom"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListOverrideDealerTo" class="sortableListOverrideDealer"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>Ekskluder salgsperson</h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        <label>
+                            1. Søk/Velg forhandler
+                            <div class="awesomplete__wrap">
+                                <input id="txtChooseDealer" class="awesomplete__input" data-list="#awesomplete__listChooseDealer" autocomplete="off" aria-autocomplete="list" data-cascade-list="#sortableListExcludeSellerFrom" data-cascade-service="GetSalesPersons/{id}" data-cascade-service-field-id="PVSalespersonDealerId" data-cascade-service-field-name="PVSalespersonDealerName" data-cascade-sorting-list="#sortableListExcludeSellerTo" />
+                                <ul class="awesomplete__list" id="awesomplete__listChooseDealer"></ul>
+                                <a class="awesomplete__close-button">
+                                    <svg class="awesomplete__close-icon icon icon--xsmall" alt="Fjern valgt kontakt" xmlns="http://www.w3.org/2000/svg" width="11.125" height="11.125" viewBox="0 0 11.125 11.125">
+                                        <path class="st1" d="M11 1.29L9.702 0 5.495 4.2 1.298 0 0 1.29 4.207 5.5 0 9.71 1.298 11l4.197-4.2L9.702 11 11 9.71 6.792 5.5z"></path>
+                                    </svg>
+                                </a>
+                                <a class="awesomplete__contacts-button">
+                                    <svg class="awesomplete__contacts-icon icon--xsmall" alt="Vis kontakter" xmlns="http://www.w3.org/2000/svg" width="12.993" height="12.993" viewBox="-339 339.66 12.9933 12.9933">
+                                        <path class="st1" d="M-327.003 352.657h-8.03c-3.028 0-2.97-2-2.97-2v-9.054c0-1.86 1.644-1.947 1.95-1.947h7.05v9.5h-7s-1 0-1 1 1 1 1 1h8v-10.5h1v12"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>2. Ekskludere salgspersoner</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListExcludeSellerFrom" class="sortableListExcludeSeller"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div id="sortableListExcludeSellerButtons" style="height: 250px;">
+                            <div style="text-align: center;"><input type="button" value=">" class="btn btn--small btn--vsmall" data-type="SomeTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value=">>" class="btn btn--small btn--vsmall" data-type="AllTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<" class="btn btn--small btn--vsmall" data-type="SomeFrom"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<<" class="btn btn--small btn--vsmall" data-type="AllFrom"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListExcludeSellerTo" class="sortableListExcludeSeller"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="competitionTabs-3">
+            <div class="row">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>Objekt</h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <label for="ddlObjectStatus">Objektstatus</label>
+                        <select id="ddlObjectStatus">
+                            <option value="-1">Alle</option>
+                            <option value="2">Brukt</option>
+                            <option value="3">Bruktimport</option>
+                            <option value="1">Ny</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Forhandlergruppe</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListDealerGroupFrom" data-defaultvalue="true" class="sortableListDealerGroup"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div id="sortableListDealerGroupButtons" style="height: 250px;">
+                            <div style="text-align: center;"><input type="button" value=">" class="btn btn--small btn--vsmall" data-type="SomeTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value=">>" class="btn btn--small btn--vsmall" data-type="AllTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<" class="btn btn--small btn--vsmall" data-type="SomeFrom"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<<" class="btn btn--small btn--vsmall" data-type="AllFrom"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListDealerGroupTo" data-defaultvalue="true" class="sortableListDealerGroup"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Merke</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListMakeFrom" data-defaultvalue="true" class="sortableListMake"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div id="sortableListMakeButtons" style="height: 250px;">
+                            <div style="text-align: center;"><input type="button" value=">" class="btn btn--small btn--vsmall" data-type="SomeTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value=">>" class="btn btn--small btn--vsmall" data-type="AllTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<" class="btn btn--small btn--vsmall" data-type="SomeFrom"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<<" class="btn btn--small btn--vsmall" data-type="AllFrom"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListMakeTo" data-defaultvalue="true" class="sortableListMake"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>Modell</h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        <label>
+                            1. Søk/Velg bilmerker
+                            <div class="awesomplete__wrap">
+                                <input id="txtChooseCarMake" class="awesomplete__input" data-list="#awesomplete__listChooseCarMake" autocomplete="off" aria-autocomplete="list" data-cascade-list="#sortableListModelFrom" data-cascade-service="GetObjectModelsByMakeId/{id}" data-cascade-service-field-id="PVObjectModelId" data-cascade-service-field-name="PVObjectModelName" data-cascade-sorting-list="#sortableListModelTo" />
+                                <ul class="awesomplete__list" id="awesomplete__listChooseCarMake"></ul>
+                                <a class="awesomplete__close-button">
+                                    <svg class="awesomplete__close-icon icon icon--xsmall" alt="Fjern valgt kontakt" xmlns="http://www.w3.org/2000/svg" width="11.125" height="11.125" viewBox="0 0 11.125 11.125">
+                                        <path class="st1" d="M11 1.29L9.702 0 5.495 4.2 1.298 0 0 1.29 4.207 5.5 0 9.71 1.298 11l4.197-4.2L9.702 11 11 9.71 6.792 5.5z"></path>
+                                    </svg>
+                                </a>
+                                <a class="awesomplete__contacts-button">
+                                    <svg class="awesomplete__contacts-icon icon--xsmall" alt="Vis kontakter" xmlns="http://www.w3.org/2000/svg" width="12.993" height="12.993" viewBox="-339 339.66 12.9933 12.9933">
+                                        <path class="st1" d="M-327.003 352.657h-8.03c-3.028 0-2.97-2-2.97-2v-9.054c0-1.86 1.644-1.947 1.95-1.947h7.05v9.5h-7s-1 0-1 1 1 1 1 1h8v-10.5h1v12"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>2. Velg modell</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListModelFrom" class="sortableListModel"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div id="sortableListModelButtons" style="height: 250px;">
+                            <div style="text-align: center;"><input type="button" value=">" class="btn btn--small btn--vsmall" data-type="SomeTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value=">>" class="btn btn--small btn--vsmall" data-type="AllTo"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<" class="btn btn--small btn--vsmall" data-type="SomeFrom"></div>
+                            <div style="padding-top: 25px;text-align: center;"><input type="button" value="<<" class="btn btn--small btn--vsmall" data-type="AllFrom"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="sortableContainer">
+                            <ul id="sortableListModelTo" data-defaultvalue="true" class="sortableListModel"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="competitionTabs-4">
+            <div class="row">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>Rangeringslister</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        <label>
+                            X antall poeng per utbetalte sak
+                            <input id="txtTotalCasePoints" type="number" />
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        <label>
+                            Intervall utbetalt beløp
+                            <input id="txtPaidAmountInterval" type="number" />
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        <label>
+                            X antall poeng per utbetalt beløp
+                            <input id="txtTotalPaidPoints" type="number" />
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        <label>
+                            X antall poeng per solgt forsikring
+                            <input id="txtSoldInsurancePoints" type="number" />
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>Poengkorreksjon</h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        <label>
+                            1. Søk/Velg forhandler
+                            <div class="awesomplete__wrap">
+                                <input id="txtSearchDealer" class="awesomplete__input" data-list="#awesomplete__listSearchDealer" autocomplete="off" aria-autocomplete="list" data-cascade-input="#txtSearchSeller" data-cascade-list="#awesomplete__listSearchSeller" data-cascade-service="GetSalesPersons/{id}" data-cascade-service-field-id="PVSalespersonDealerId" data-cascade-service-field-name="PVSalespersonDealerName" />
+                                <ul class="awesomplete__list" id="awesomplete__listSearchDealer"></ul>
+                                <a class="awesomplete__close-button">
+                                    <svg class="awesomplete__close-icon icon icon--xsmall" alt="Fjern valgt kontakt" xmlns="http://www.w3.org/2000/svg" width="11.125" height="11.125" viewBox="0 0 11.125 11.125">
+                                        <path class="st1" d="M11 1.29L9.702 0 5.495 4.2 1.298 0 0 1.29 4.207 5.5 0 9.71 1.298 11l4.197-4.2L9.702 11 11 9.71 6.792 5.5z"></path>
+                                    </svg>
+                                </a>
+                                <a class="awesomplete__contacts-button">
+                                    <svg class="awesomplete__contacts-icon icon--xsmall" alt="Vis kontakter" xmlns="http://www.w3.org/2000/svg" width="12.993" height="12.993" viewBox="-339 339.66 12.9933 12.9933">
+                                        <path class="st1" d="M-327.003 352.657h-8.03c-3.028 0-2.97-2-2.97-2v-9.054c0-1.86 1.644-1.947 1.95-1.947h7.05v9.5h-7s-1 0-1 1 1 1 1 1h8v-10.5h1v12"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        <label>
+                            2. Velg salgsperson
+                            <div class="awesomplete__wrap">
+                                <input id="txtSearchSeller" class="awesomplete__input" data-list="#awesomplete__listSearchSeller" autocomplete="off" aria-autocomplete="list" disabled />
+                                <ul class="awesomplete__list" id="awesomplete__listSearchSeller"></ul>
+                                <a class="awesomplete__close-button">
+                                    <svg class="awesomplete__close-icon icon icon--xsmall" alt="Fjern valgt kontakt" xmlns="http://www.w3.org/2000/svg" width="11.125" height="11.125" viewBox="0 0 11.125 11.125">
+                                        <path class="st1" d="M11 1.29L9.702 0 5.495 4.2 1.298 0 0 1.29 4.207 5.5 0 9.71 1.298 11l4.197-4.2L9.702 11 11 9.71 6.792 5.5z"></path>7
+                                    </svg>
+                                </a>
+                                <a class="awesomplete__contacts-button">
+                                    <svg class="awesomplete__contacts-icon icon--xsmall" alt="Vis kontakter" xmlns="http://www.w3.org/2000/svg" width="12.993" height="12.993" viewBox="-339 339.66 12.9933 12.9933">
+                                        <path class="st1" d="M-327.003 352.657h-8.03c-3.028 0-2.97-2-2.97-2v-9.054c0-1.86 1.644-1.947 1.95-1.947h7.05v9.5h-7s-1 0-1 1 1 1 1 1h8v-10.5h1v12"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                        <label>
+                            Angi poengkorreksjon
+                            <input id="txtPointsCorrection" type="number" />
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="pnlPointsCorrectionAdd" style="float: right;">
+                            <input id="btnPointsCorrectionAdd" type="button" value="Legg til" class="btn btn--small" />
+                        </div>
+                        <div id="pnlPointsCorrectionUpdate" style="float: right;display:none;">
+                            <input id="btnPointsCorrectionUpdate" type="button" value="Oppdater" class="btn btn--small" />
+                            <input id="btnPointsCorrectionCancel" type="button" value="Avbryt" class="btn btn--small" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table id="pointsCorrectionDataTable" class="bootgrid-table table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 60px;"></th>
+                                    <th>Id</th>
+                                    <th>Salgsperson</th>
+                                    <th>Poengkorreksjon</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <input id="btnPrevious" type="button" value="Forrige" class="btn btn--small" disabled />
+            <input id="btnNext" type="button" value="Neste" class="btn btn--small" />
+        </div>
+        <hr>
+        <div class="col-xs-12">
+            <input id="btnSubmit" type="button" value="Lagre" class="btn btn--small" />
+            <input id="btnCancel" type="button" value="Lukk" class="btn btn--small" />
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            var competitionController = new app.cm.CompetitionController();
+            competitionController.competition();
+        });
+    </script>
+}

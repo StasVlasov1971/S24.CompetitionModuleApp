@@ -1,0 +1,67 @@
+// Color variables (appears count calculates by raw css)
+@color0: #ec0000; // Appears 2 times
+
+// Width variables (appears count calculates by raw css)
+@width0: 100%; // Appears 2 times
+
+
+#s24PlaceHolderMain {
+	.ui-tab {
+		a {
+			border-bottom: none;
+			width: @width0;
+		}
+	}
+	.ui-state-active {
+		background-color: #ededed;
+		border: 1px solid @color0;
+	}
+	li.ui-state-focus {
+		a {
+			&:focus {
+				outline-color: transparent;
+			}
+		}
+	}
+	.ui-tabs-anchor {
+		color: #303030;
+	}
+	.ui-tabs {
+		.ui-tabs-nav {
+			padding: 0;
+			li {
+				border-bottom-width: inherit;
+				float: left;
+				margin: 0;
+				padding: 0;
+				width: 25%;
+			}
+		}
+	}
+	.sortableContainer {
+		height: 100%;
+		overflow-y: hidden;
+		width: @width0;
+	}
+	ul[class^="sortableList"] {
+		border: rgb(201, 202, 197) solid .5px;
+		height: 250px;
+		overflow-y: auto;
+	}
+	.ui-state-custom-default {
+		background-color: rgb(233, 235, 229);
+		border: 1px solid #c5c5c5;
+		color: #454545;
+		font-size: 14px;
+		font-weight: normal;
+		word-wrap: break-word;
+	}
+	.ui-state-custom-selected {
+		border: 1px solid @color0;
+	}
+}
+@media(max-width: 525px) {
+    #s24PlaceHolderMain .ui-tabs .ui-tabs-nav li { 
+        width: 50%;
+    }
+}

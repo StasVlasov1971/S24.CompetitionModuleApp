@@ -1,0 +1,227 @@
+parameters:
+
+  # Settings for deployment to QA
+  - name: skipQAEnv
+    displayName: Skip deployment to QA
+    type: boolean
+    default: true
+  
+  # Settings for deployment to PreProd
+  - name: skipPreProdEnv
+    displayName: Skip deployment to PreProd
+    type: boolean
+    default: true
+  
+  # Settings for deployment to Prod
+  - name: skipProdEnv
+    displayName: Skip deployment to Prod
+    type: boolean
+    default: true
+
+name: $(date:yyyyMMdd)$(rev:.r)
+trigger: none
+pool:
+  name: AutoART-BAU
+
+stages:
+  - stage: 'Build'
+    displayName: 'Build Competition App'
+    jobs:
+      - job: 'Build'
+        displayName: 'Build Competition App'
+        workspace:
+          clean: all
+        
+        steps:
+          - checkout: self
+
+          - task: NuGetCommand@2
+            displayName: 'NuGet restore'
+            inputs:
+              restoreSolution: '**\*.sln'
+              vstsFeed: 'f3291833-42bd-4fce-bebc-d5f758495a9e'
+
+          - task: NodeTool@0
+            displayName: 'Use Node 10.x'
+            inputs:
+              versionSpec: 10.x
+
+          - task: Npm@1
+            displayName: 'Install web project dependencies'
+            inputs:
+              workingDir: S24.CompetitionApp
+              verbose: false
+
+#          - task: SonarQubePrepare@7
+#            displayName: 'Prepare analysis on SonarQube'
+#            inputs:
+#              SonarQube: Nordic SonarQube Auto ART
+#              projectKey: SCBNO.S24.CompetitionModuleApp
+#              projectName: 'SCBNO S24 CompetitionModuleApp'
+#              projectVersion: '$(Build.BuildNumber)'
+#            condition: >
+#              in(variables['Build.SourceBranchName'], 'master')
+              
+          - task: Npm@1
+            displayName: 'Build for prod'
+            inputs:
+              command: custom
+              workingDir: S24.CompetitionApp
+              verbose: false
+              customCommand: 'run build-dev'
+
+          - task: VSBuild@1
+            displayName: 'Build solution S24.CompetitionApp.sln'
+            inputs:
+              solution: S24.CompetitionApp.sln
+              vsVersion: 15.0
+              msbuildArgs: '/P:IsPackaging=true;OutputPath=$(Build.ArtifactStagingDirectory)'
+
+#          - task: SonarQubeAnalyze@7
+#            displayName: 'Run Code Analysis'
+#            condition: >
+#              in(variables['Build.SourceBranchName'], 'master')            
+
+#          - task: SonarQubePublish@7
+#            displayName: 'Publish Quality Gate Result'
+#            condition: >
+#              in(variables['Build.SourceBranchName'], 'master')
+
+          - task: OctopusPack@4
+            displayName: 'Package S24.CompetitionApp'
+            inputs:
+              PackageId: SCBNO.S24.CompetitionModule.Web
+              PackageVersion: '$(Build.Buildnumber)'
+              SourcePath: '$(Build.ArtifactStagingDirectory)\_PublishedWebsites\S24.CompetitionApp'
+              OutputPath: '$(Build.ArtifactStagingDirectory)\Packages'
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Artifact'
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+
+  - stage: 'Create_release'
+    displayName: 'Create Octopus release'
+    jobs:
+      - deployment: Create_release
+        environment: Octopus
+        workspace:
+          clean: all
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: DownloadBuildArtifacts@0
+                  displayName: 'Download build artifacts'
+                  inputs:
+                    buildType: 'current'
+                    artifactName: 'drop'
+                    downloadPath: '$(Pipeline.Workspace)\SCBNO_S24_CompetitionModuleApp'
+
+                - task: OctopusPush@3
+                  displayName: 'Push Packages to Octopus'
+                  inputs:
+                    OctoConnectedServiceName: 'Nordic Octopus (SOSLOCT001) - Ignore SSL'
+                    Package: $(Pipeline.Workspace)\SCBNO_S24_CompetitionModuleApp\**\*.nupkg
+                    Replace: true
+
+                - task: OctopusCreateRelease@3
+                  displayName: 'Create Octopus Release: SCBNO.S24.CompetitionModule.Web'
+                  inputs:
+                    OctoConnectedServiceName: 'Nordic Octopus (SOSLOCT001) - Ignore SSL'
+                    ProjectName: SCBNO.S24.CompetitionModule.Web
+                    ReleaseNumber: '$(Build.BuildNumber)'
+                    ChangesetCommentReleaseNotes: true
+                    WorkItemReleaseNotes: true
+
+  - stage: 'Release_QA'
+    displayName: 'Octopus release to QA'
+    condition: ${{ eq(parameters.skipQAEnv, false) }}
+    jobs:
+      - deployment: Release_QA
+        environment: BAU NO QA
+        workspace:
+          clean: all
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: none
+
+                - task: OctopusDeployRelease@3
+                  displayName: 'Deploy Octopus Release: SCBNO.S24.CompetitionModule.Web to QA'
+                  inputs:
+                    OctoConnectedServiceName: 'Nordic Octopus (SOSLOCT001) - Ignore SSL'
+                    Project: SCBNO.S24.CompetitionModule.Web
+                    ReleaseNumber: $(Build.BuildNumber)
+                    Environments: QA
+                    ShowProgress: true
+
+  - stage: 'Release_PreProd'
+    displayName: 'Octopus release to PreProd'
+    condition: ${{ eq(parameters.skipPreProdEnv, false) }}
+    jobs:
+      - deployment: Release_PreProd
+        environment: BAU NO PreProd
+        workspace:
+          clean: all
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: none
+
+                - task: OctopusDeployRelease@3
+                  displayName: 'Deploy Octopus Release: SCBNO.S24.CompetitionModule.Web to PreProd'
+                  inputs:
+                    OctoConnectedServiceName: 'Nordic Octopus (SOSLOCT001) - Ignore SSL'
+                    Project: SCBNO.S24.CompetitionModule.Web
+                    ReleaseNumber: $(Build.BuildNumber)
+                    Environments: PreProd
+                    ShowProgress: true
+
+  - stage: ManualInterventionProdStage
+    displayName: Pre-approval for Prod
+    condition: ${{ eq(parameters.skipProdEnv, false) }}
+    jobs:
+      - job: ManualInterventionProdJob
+        displayName: Pre-approval for Prod
+        pool: server
+        timeoutInMinutes: 4320 # job times out in 3 days
+        steps:
+          - task: ManualValidation@0
+            timeoutInMinutes: 1440 # task times out in 1 day
+            inputs:
+              instructions: 'Please validate deployment to Prod'
+              onTimeout: 'reject'
+
+  - stage: 'Release_Prod'
+    displayName: 'Octopus release to Prod'
+    dependsOn:
+      - ManualInterventionProdStage
+    condition:
+      and
+      (
+      succeeded('ManualInterventionProdStage'),
+      ${{ eq(parameters.skipProdEnv, false) }}
+      )
+    jobs:
+      - deployment: Release_Prod
+        environment: BAU NO Prod
+        workspace:
+          clean: all
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: none
+
+                - task: OctopusDeployRelease@3
+                  displayName: 'Deploy Octopus Release: SCBNO.S24.CompetitionModule.Web to Prod'
+                  inputs:
+                    OctoConnectedServiceName: 'Nordic Octopus (SOSLOCT001) - Ignore SSL'
+                    Project: SCBNO.S24.CompetitionModule.Web
+                    ReleaseNumber: $(Build.BuildNumber)
+                    Environments: Prod
+                    ShowProgress: true

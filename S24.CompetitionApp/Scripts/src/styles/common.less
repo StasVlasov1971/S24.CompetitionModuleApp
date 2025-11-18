@@ -1,0 +1,301 @@
+@charset "UTF-8";
+
+@darkGrey: DarkSlateGray;
+@santander_red: #ec0000;
+@santander_green: #387711;
+@white: white;
+@whitegrey: #e9ebe5;
+@lightBlack: #303030;
+@lightgrey: #adadad;
+@lightgrey2: #c5c5c5;
+@font_family_1: "KievitRegular", "Helvetica", sans-serif;
+@font_family_2: "KievitBold", "Helvetica", sans-serif;
+@faded_red: rgba(236, 0, 0, 0.2);
+@color_1: rgb(48, 48, 48);
+@color_2: #2f4f4f;
+@grey: #eee;
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@font-face {
+    font-family: "KievitBold";
+    src: url("../fonts/KievitBold_eot.eot?#iefix");
+    src: url("../fonts/KievitBold_eot.eot?#iefix") format("eot"), url("../fonts/KievitBold_woff2.woff2") format("woff2"), url("../fonts/KievitBold_woff.woff") format("woff"), url("../fonts/KievitBold_ttf.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "KievitRegular";
+    src: url("../fonts/KievitRegular_eot.eot?#iefix");
+    src: url("../fonts/KievitRegular_eot.eot?#iefix") format("eot"), url("../fonts/KievitRegular_woff2.woff2") format("woff2"), url("../fonts/KievitRegular_woff.woff") format("woff"), url("../fonts/KievitRegular_ttf.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "KievitMedium";
+    src: url("../fonts/KievitMedium_eot.eot?#iefix");
+    src: url("../fonts/KievitMedium_eot.eot?#iefix") format("eot"), url("../fonts/KievitMedium_woff2.woff2") format("woff2"), url("../fonts/KievitMedium_woff.woff") format("woff"), url("../fonts/KievitMedium_ttf.ttf") format("truetype");
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+    font-size: 100%;
+}
+
+h1 {
+    font-family: @font_family_2;
+    margin: 0;
+    line-height: 58px;
+    letter-spacing: -0.003em;
+    margin-bottom: 29px;
+    font-size: 44px;
+}
+
+h2 {
+    font-family: @font_family_2;
+    margin: 0;
+    line-height: 43.5px;
+    margin-bottom: 14.5px;
+    font-size: 32px;
+}
+
+h3 {
+    font-family: @font_family_2;
+    margin: 0;
+    line-height: 29px;
+    font-size: 21px;
+}
+
+h4 {
+    font-family: @font_family_2;
+    margin: 0;
+    font-size: 20px;
+}
+
+h5 {
+    font-family: @font_family_2;
+    margin: 0;
+    font-size: 18px;
+}
+
+h6 {
+    font-family: @font_family_2;
+    margin: 0;
+    font-size: 16px;
+}
+
+body {
+    font-family: KievitRegular, Helvetica, sans-serif;
+    line-height: 29px;
+    color: #303030;
+    background-color: transparent;
+    min-height: 0%;
+    font-feature-settings: "tnum"1, "lnum"1;
+}
+
+.mb {
+    margin-bottom: 29px;
+}
+
+.mb--xxs {
+    margin-bottom: 7.25px;
+}
+
+.mb--xs {
+    margin-bottom: 14.5px;
+}
+
+.mb--md {
+    margin-bottom: 58px;
+}
+
+.mb--lg {
+    margin-bottom: 87px;
+}
+
+.mb--section {
+    margin-bottom: 145px;
+}
+
+.mt {
+    margin-top: 29px;
+}
+
+.mt--xxs {
+    margin-top: 7.25px;
+}
+
+.mt--xs {
+    margin-top: 14.5px;
+}
+
+.mt--md {
+    margin-top: 58px;
+}
+
+.mt--lg {
+    margin-top: 87px;
+}
+
+.mt--section {
+    margin-top: 145px;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.background--beige {
+    background: #e9ebe5;
+}
+
+.background--blue {
+    background: #1BB3BC;
+}
+
+.color--white {
+    color: white;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+// REGION - BOOTSTRAP CUSTOM
+
+#s24PlaceHolderMain .row-sameheight {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* XXS COLUMN*/
+/* to break down col-xs */
+.visible-xxs {
+    display: none !important;
+}
+
+@media (max-width: 525px) {
+    div[class^="col-xxs-"] {
+        float: left;
+        position: relative;
+        left: 0;
+        right: 0;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .col-xxs-1 {
+        width: 8.33333333%;
+    }
+
+    .col-xxs-2 {
+        width: 16.66666667%;
+    }
+
+    .col-xxs-3 {
+        width: 25%;
+    }
+
+    .col-xxs-4 {
+        width: 33.33333333%;
+    }
+
+    .col-xxs-5 {
+        width: 41.66666667%;
+    }
+
+    .col-xxs-6 {
+        width: 50%;
+    }
+
+    .col-xxs-7 {
+        width: 58.33333333%;
+    }
+
+    .col-xxs-8 {
+        width: 66.66666667%;
+    }
+
+    .col-xxs-9 {
+        width: 75%;
+    }
+
+    .col-xxs-10 {
+        width: 83.33333333%;
+    }
+
+    .col-xxs-11 {
+        width: 91.66666667%;
+    }
+
+    .col-xxs-12 {
+        width: 100%;
+    }
+
+    .hidden-xxs {
+        display: none !important;
+    }
+
+    .visible-xxs {
+        display: block !important;
+    }
+}
+
+/* XXS COLUMN*/
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    background-color: #eee;
+    border: 1px solid #c9cac5;
+}
+
+// ENDREGION - BOOTSTRAP CUSTOM

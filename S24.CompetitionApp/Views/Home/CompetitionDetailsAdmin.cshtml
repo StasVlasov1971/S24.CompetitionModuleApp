@@ -1,0 +1,44 @@
+﻿
+<div id="competitionDetails">
+
+    <div class="container-fluid competitionHeaderRanking">
+        <div class="row title">
+            <div class="col-xs-12">
+                <h2 id="competitionTitle"></h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="competitionInformation">
+        <div class="container-fluid">
+            <div class="competitionInformationWrapper">
+                <div class="row">
+                    <div id="competitionImagePanel" class="col-xs-12 col-sm-6">
+                        <img alt="competitionImage" id="competitionImage" src="#" />
+                    </div>
+                    <div id="competitionDescription" class="mb col-xs-12 col-sm-6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 competitionTable">
+        <table id="competitionDataTable">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div id="currentCompetitionEmpty" class="col-xs-12 mb"></div>
+
+</div>
+
+<div id="loading-pnl"></div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            var competitionDetailsController = new app.cm.CompetitionDetailsController();
+            competitionDetailsController.getCompetitionDetailsAdmin('competitionDataTable');
+        });
+    </script>
+}
