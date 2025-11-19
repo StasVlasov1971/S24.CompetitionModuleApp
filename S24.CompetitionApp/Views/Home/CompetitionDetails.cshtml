@@ -45,13 +45,13 @@
             <div class="contentDivider"></div>
             <div class="row">
                 <div class="col-xxs-12 col-xs-4 col-sm-3 col-md-2">
-                    <span class="rowHeader">SAFE</span>
+                    <span class="rowHeader">Utvidet Garanti</span>
                 </div>
                 <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10">
                     <ul class="list-inline">
-                        <li>Antall SAFE solgt: <span id="ccrCountLBF" class="bold"></span></li>
+                        <li>Antall forsikringer solgt: <span id="ccrCountLBF" class="bold"></span></li>
                         <li>Kanselleringer: <span id="ccrTotalAnnulled" class="bold"></span></li>
-                        <li>Poeng for SAFE: <span id="ccrTotalLbf" class="bold"></span></li>
+                        <li>Poeng for Utvidet Garanti: <span id="ccrTotalLbf" class="bold"></span></li>
                     </ul>
                 </div>
             </div>
@@ -100,7 +100,7 @@
 
 
 @section scripts {
-    <script type="text/javascript">
+    <script nonce="@HttpContext.Current.Items["CSPNonce"]" type="text/javascript">
         $(function () {
             var competitionDetailsController = new app.cm.CompetitionDetailsController();
             competitionDetailsController.getCompetitionDetails('competitionDataTable', true);

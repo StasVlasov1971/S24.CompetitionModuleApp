@@ -82,7 +82,7 @@
         </div>
     </div>
 
-    <script>
+    <script nonce="@HttpContext.Current.Items["CSPNonce"]" type="text/javascript">
         const isS24 = window.location.origin.includes("s24");
         if (isS24) {
             const base = "/Pages/CompetitionDetails.aspx";

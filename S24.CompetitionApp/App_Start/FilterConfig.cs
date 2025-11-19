@@ -10,6 +10,7 @@ namespace S24.CompetitionApp
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new SecurityHeadersFilter());
         }
 
         public static void RegisterHttpFilters(HttpConfiguration configuration)

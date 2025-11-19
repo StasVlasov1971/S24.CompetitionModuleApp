@@ -628,7 +628,7 @@
 </div>
 
 @section scripts {
-    <script type="text/javascript">
+    <script nonce="@HttpContext.Current.Items["CSPNonce"]" type="text/javascript">
         $(function () {
             var competitionController = new app.cm.CompetitionController();
             competitionController.competition();

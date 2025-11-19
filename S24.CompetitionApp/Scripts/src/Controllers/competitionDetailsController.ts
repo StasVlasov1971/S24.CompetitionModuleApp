@@ -111,8 +111,8 @@ export class CompetitionDetailsController {
             { fieldName: "Points", fieldDisplayName: "Poeng", fieldType: "numeric" },
             { fieldName: "Boost_Amount", fieldDisplayName: "Volum", fieldType: "numeric", fieldFormatter: "volumFormat" },
             { fieldName: "Count_Payout", fieldDisplayName: "Utbetaling", fieldType: "numeric" },
-            { fieldName: "Count_LBF", fieldDisplayName: "SAFE", fieldType: "numeric", fieldFormatter: "CountLBFFormat" },
-            { fieldName: "Count_Annulled_LBF", fieldDisplayName: "Annullert SAFE", fieldType: "numeric" },
+            { fieldName: "Count_LBF", fieldDisplayName: "Utvidet Garanti", fieldType: "numeric", fieldFormatter: "CountLBFFormat" }, // previously SAFE
+            { fieldName: "Count_Annulled_LBF", fieldDisplayName: "Annullert Utvidet Garanti", fieldType: "numeric" },
             { fieldName: "KAM_Name", fieldDisplayName: "KAM" },
             { fieldName: "PointsCorrection", fieldDisplayName: "Poengkorreksjon", fieldType: "numeric" },
         ];
@@ -146,7 +146,7 @@ export class CompetitionDetailsController {
                                     volumFormat(column, row) {
                                         return row.Boost_Amount.toLocaleString(undefined, { maximumFractionDigits: 0 });
                                     },
-                                    // update the Count_LBF to include both SAFE and Annulled SAFE
+                                    // update the Count_LBF to include both Utvidet Garanti and Annulled Utvidet Garanti (previously SAFE and Annulled SAFE)
                                     CountLBFFormat(column, row) {
                                         return (row.Count_LBF + row.Count_Annulled_LBF);
                                     },

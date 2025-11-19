@@ -2,10 +2,50 @@
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+ 
 module.exports = function (env) {
     const isProduction = env === 'prod';
+ 
+    const plugins = [
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        })
+    ];
 
+    if (!isProduction) {
+        plugins.push(
+            // Clean dist folder.
+            new CleanWebpackPlugin(["./Scripts/dist"], {
+                "verbose": true
+            }),
+            // Avoid publishing when compilation failed
+            new webpack.NoEmitOnErrorsPlugin(),
+        );
+    };
+    
+    plugins.push(
+        new HtmlWebpackPlugin({
+            inject: "head",
+            filename: "../../Views/Shared/_Layout.cshtml",
+            template: "../../Views/Shared/_Layout_Template.cshtml",
+            minify: isProduction && {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true
+            },
+            templateParameters: {
+                cspNonce: '<%= HttpContext.Current.Items["CSPNonce"] %>'
+            }
+        })
+    );
+ 
     return {
         context: path.join(__dirname, "/Scripts/src/"),
         resolve: {
@@ -82,7 +122,7 @@ module.exports = function (env) {
                 },
                 {
                     test: /\.css$/,
-                    //exclude:'/node_modules/',                        
+                    //exclude:'/node_modules/',   
                     use: [
                         'style-loader',
                         'css-loader'
@@ -100,29 +140,7 @@ module.exports = function (env) {
                 }
             ]
         },
-        plugins: isProduction
-            ? [
-                new webpack.LoaderOptionsPlugin({
-                    minimize: true
-                })
-            ]
-            : [
-                new webpack.LoaderOptionsPlugin({
-                    minimize: true
-                }),
-                // Clean dist folder.
-                new CleanWebpackPlugin(["./Scripts/dist"], {
-                    "verbose": true // Write logs to console.
-                }),
-                //avoid publishing when compilation failed
-                new webpack.NoEmitOnErrorsPlugin(),
-
-                new HtmlWebpackPlugin({
-                    inject: "head",
-                    filename: "../../Views/Shared/_Layout.cshtml",
-                    template: "../../Views/Shared/_Layout_Template.cshtml"
-                })
-            ],
+        plugins: plugins,
         //pretty terminal output
         stats: { colors: true }
     };

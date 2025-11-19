@@ -586,7 +586,7 @@ namespace S24.CompetitionApp.Controllers
                 return null;
             }
         }
-        
+
         [HttpGet]
         [Route("GetSalespersonRankingForCompetition/{competitionId}/{salesPersonId}")]
         public CompetitionRanking GetSalespersonRankingForCompetition(string competitionId, string salesPersonId)

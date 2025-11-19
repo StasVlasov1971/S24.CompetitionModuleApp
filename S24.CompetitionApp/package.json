@@ -8,6 +8,7 @@
     "@types/jqueryui": "1.12.2",
     "@types/pikaday": "^1.7.0",
     "clean-webpack-plugin": "0.1.19",
+    "csp-html-webpack-plugin": "^2.5.0",
     "css-loader": "0.28.11",
     "expose-loader": "0.7.5",
     "file-loader": "1.1.11",
@@ -23,10 +24,10 @@
   },
   "main": "index.ts",
   "scripts": {
-    "build-dev": "./node_modules/.bin/webpack",
+    "build-dev": "(set NODE_OPTIONS=--openssl-legacy-provider) &&  webpack",
     "build-prod": "webpack --env=prod",
     "start": "npm run build-dev"
-  },
+},
   "dependencies": {
     "awesomplete": "1.1.2",
     "bootstrap": "3.3.7",

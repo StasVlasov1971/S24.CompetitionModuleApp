@@ -193,6 +193,7 @@
     </Compile>
     <Compile Include="HttpFilters\AuthorizeScm.cs" />
     <Compile Include="HttpFilters\AuthorizeKamOrScm.cs" />
+    <Compile Include="HttpFilters\SecurityHeadersFilter.cs" />
     <Compile Include="Models\CompetitionSummaryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HttpFilters\SharepointCookieAuthenticationFilter.cs" />
