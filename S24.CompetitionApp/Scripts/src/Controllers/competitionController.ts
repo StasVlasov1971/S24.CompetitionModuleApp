@@ -2,9 +2,6 @@ import * as $ from "jquery";
 import "jquery-ui/";
 import "jquery-ui/ui/disable-selection";
 import "jquery-ui/ui/widgets/tabs";
-import "../../../node_modules/jquery-ui/themes/base/all.css";
-import "../libs/cleditor1_4_5/jquery-cleditor.js";
-import "../libs/jquery-multisortable.js";
 import { CommonUtils } from "../helpers/CommonUtils";
 import { Validate } from "../helpers/validate";
 import { CompetitionServiceModel } from "../ServiceModels/competitionServiceModel";
@@ -63,10 +60,11 @@ export class CompetitionController {
                     $("#txtDisplayTitle").val(comp.DisplayName);
                     $("#datepickerStartDateDisplay").val(CommonUtils.convertToStringDate(comp.DisplayDateStart));
                     $("#datepickerEndDateDisplay").val(CommonUtils.convertToStringDate(comp.DisplayDateEnd));
-                    $("#txtDescription").val(comp.DisplayDescription);
-                    $("textarea#txtDescription").cleditor({
-                        fonts: "KievitMedium, KievitRegular, KievitBold"
-                    });
+                    
+                    // Инициализируем редактор сначала, потом устанавливаем контент
+                    this.InitTxtDescription();
+                    this.setDescriptionContent(comp.DisplayDescription || '');
+     
                     $("#txtImageUrl").val(comp.DisplayImageUrl);
                     if (comp.DisplayImageUrl) {
                         self.competitionServiceModel.getImageById(comp.DisplayImageUrl, (imageBase64) => {
@@ -101,9 +99,7 @@ export class CompetitionController {
             CompetitionControllerHelpers.fillAllLists(null);
 
             // TAB1
-            $("textarea#txtDescription").cleditor({
-                fonts: "KievitMedium, KievitRegular, KievitBold"
-            });
+            this.InitTxtDescription();
         }
 
         $("#competitionImage").change(function() {
@@ -215,7 +211,7 @@ export class CompetitionController {
                 comp.DisplayName = $("#txtDisplayTitle").val();
                 comp.DisplayDateStart = CommonUtils.convertDateToJsonDateFormat($("#datepickerStartDateDisplay").val());
                 comp.DisplayDateEnd = CommonUtils.convertDateToJsonDateFormat($("#datepickerEndDateDisplay").val());
-                comp.DisplayDescription = $("#txtDescription").val();
+                comp.DisplayDescription = this.getDescriptionContent();
                 comp.DisplayImageUrl = $("#txtImageUrl").val();
 
                 // Tab2
@@ -383,6 +379,111 @@ export class CompetitionController {
         });
     }
 
+    InitTxtDescription() {
+    const $textarea = $('#txtDescription');
+    
+    // Сначала убедимся, что стили Summernote полностью загружены
+    const initSummernote = () => {
+        ($textarea as any).summernote({
+            height: 200,
+            focus: false,
+            placeholder: 'Skriv inn beskrivelse her...',
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link']],
+                ['view', ['fullscreen', 'codeview']]
+            ],
+            callbacks: {
+                onChange: function(contents) {
+                    $textarea.val(contents);
+                },
+                onInit: function() {
+                    // Принудительно применяем стили для иконок
+                    const $editor = $('.note-editor');
+                    const $toolbar = $('.note-toolbar');
+                    const $editable = $('.note-editable');
+                    
+                    $editable.css({
+                        'background-color': '#ffffff',
+                        'color': '#333333',
+                        'display': 'block'
+                    });
+                    
+                    $toolbar.css({
+                        'background-color': '#f5f5f5',
+                        'border-bottom': '1px solid #ddd'
+                    });
+                    
+                    // Принудительно скрываем codable
+                    $('.note-codable').hide();
+                    
+                    // Принудительно перезагружаем шрифты
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @font-face {
+                            font-family: 'summernote';
+                            font-style: normal;
+                            font-weight: normal;
+                            src: url('../fonts/summernote.eot');
+                            src: url('../fonts/summernote.eot?#iefix') format('embedded-opentype'),
+                                 url('../fonts/summernote.woff2') format('woff2'),
+                                 url('../fonts/summernote.woff') format('woff'),
+                                 url('../fonts/summernote.ttf') format('truetype');
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            }
+        });
+    };
+
+    // Даем время на полную загрузку стилей
+    if (document.readyState === 'complete') {
+        initSummernote();
+    } else {
+        $(document).ready(function() {
+            // Небольшая задержка для гарантированной загрузки шрифтов
+            setTimeout(initSummernote, 100);
+        });
+    }
+    
+    // Дополнительный фикс через короткое время
+    setTimeout(() => {
+        $('.note-editable').css({
+            'background-color': '#ffffff',
+            'color': '#333333'
+        });
+        $('.note-codable').hide();
+        
+        // Принудительный reflow для иконок
+        const $toolbar = $('.note-toolbar');
+        if ($toolbar.length) {
+            $toolbar.hide().show();
+        }
+    }, 200);
+}
+    
+    private getDescriptionContent(): string {
+        const $textarea = $('#txtDescription');
+        return ($textarea as any).summernote('code');
+    }
+
+    private setDescriptionContent(content: string): void {
+        const $textarea = $('#txtDescription');
+        ($textarea as any).summernote('code', content || '');
+        
+        // Еще раз фикс фона после установки контента
+        setTimeout(() => {
+            $('.note-editable').css({
+                'background-color': '#ffffff',
+                'color': '#333333'
+            });
+        }, 50);
+    }
+    
     private updateImagePreview(input) {
         if (input.files && input.files[0]) {
             const reader = new FileReader();

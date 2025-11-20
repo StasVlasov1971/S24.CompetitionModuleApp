@@ -16,13 +16,17 @@ import "./styles/multisortCustom.less";
 import "./styles/pikaday.less";
 import "./styles/competitionSummary.less";
 import "./styles/allCompetitions.less";
-import "./libs/cleditor1_4_5/jquery-cleditor.min.css";
-import "jquery.cookie";
+
 import "jquery";
+import "jquery.cookie";
 import "bootstrap";
 import "./helpers/datepicker";
+import "font-awesome/css/font-awesome.min.css";
+import "summernote/dist/summernote.css";
+import "summernote/dist/summernote.min.js";
+// @ts-ignore: side-effect import for .less has no type declarations
+import "./styles/summernote-fix.less";
 import "./helpers/awesomeplete";
-import "./libs/cleditor1_4_5/jquery-cleditor.js";
 import "./libs/iframeResizer.contentWindow.min.js";
 
 export * from "./ServiceModels/competitionServiceModel";

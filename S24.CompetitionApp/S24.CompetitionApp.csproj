@@ -242,6 +242,7 @@
     <Content Include="Scripts\src\libs\cleditor1_4_5\jquery-cleditor.js" />
     <Content Include="Scripts\src\libs\cleditor1_4_5\jquery-cleditor.min.css" />
     <Content Include="Scripts\src\libs\iframeResizer.contentWindow.min.js" />
+    <Content Include="Scripts\src\libs\jquery-csp-patch.js" />
     <Content Include="Scripts\src\libs\jquery-multisortable.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

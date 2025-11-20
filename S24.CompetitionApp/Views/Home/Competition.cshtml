@@ -628,10 +628,16 @@
 </div>
 
 @section scripts {
-    <script nonce="@HttpContext.Current.Items["CSPNonce"]" type="text/javascript">
-        $(function () {
-            var competitionController = new app.cm.CompetitionController();
-            competitionController.competition();
+    <script nonce="@HttpContext.Current.Items["CSPNonce"]" type="text/javascript" defer>
+        // Этот скрипт выполнится после загрузки всех ресурсов
+        window.addEventListener('load', function () {
+            if (typeof $ !== 'undefined' && window.app && window.app.cm) {
+                $(function () {
+                    console.debug('--------------------')
+                    var competitionController = new app.cm.CompetitionController();
+                    competitionController.competition();
+                });
+            }
         });
     </script>
 }

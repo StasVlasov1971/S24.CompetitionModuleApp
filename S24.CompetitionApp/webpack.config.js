@@ -1,14 +1,21 @@
-﻿const path = require("path");
+﻿﻿const path = require("path");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
- 
+
 module.exports = function (env) {
     const isProduction = env === 'prod';
- 
+
     const plugins = [
         new webpack.LoaderOptionsPlugin({
             minimize: true
+        }),
+        // Добавляем ProvidePlugin для глобального доступа к jQuery
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            'window.$': 'jquery'
         })
     ];
 
@@ -22,7 +29,7 @@ module.exports = function (env) {
             new webpack.NoEmitOnErrorsPlugin(),
         );
     };
-    
+
     plugins.push(
         new HtmlWebpackPlugin({
             inject: "head",
@@ -45,19 +52,26 @@ module.exports = function (env) {
             }
         })
     );
- 
+
     return {
         context: path.join(__dirname, "/Scripts/src/"),
         resolve: {
-            extensions: ['.ts', '.js', '.css']
+            extensions: ['.ts', '.js', '.css'],
+            alias: {
+                // Добавляем алиас для jQuery
+                'jquery': path.resolve(__dirname, 'node_modules/jquery/dist/jquery.js'),
+            }
         },
         entry: {
-            main: ['./index']
+            // Убеждаемся, что jQuery загружается первым
+            main: [
+                'jquery',
+                './index'
+            ]
         },
         output: {
-            publicPath: "Scripts/dist/" /*'C:/Projects/S24.Competition/S24.Competition.WebUi/Scripts/dist/'*/,
+            publicPath: "Scripts/dist/",
             path: path.join(__dirname, '/Scripts/dist/'),
-            // path: path.join(__dirname, "/apps/competitions/Scripts/dist/"),
             filename: isProduction ? 'build.min.js' : '[name].bundle.[chunkhash].js',
             chunkFilename: "[name].[chunkhash].js",
 
@@ -96,10 +110,6 @@ module.exports = function (env) {
                     use: "imports-loader?$=jquery"
                 },
                 {
-                    test: require.resolve('./Scripts/src/libs/cleditor1_4_5/jquery-cleditor.js'),
-                    use: "imports-loader?$=jquery"
-                },
-                {
                     test: require.resolve('./Scripts/src/libs/jquery-multisortable.js'),
                     use: "imports-loader?$=jquery"
                 },
@@ -122,26 +132,63 @@ module.exports = function (env) {
                 },
                 {
                     test: /\.css$/,
-                    //exclude:'/node_modules/',   
                     use: [
                         'style-loader',
                         'css-loader'
                     ]
                 },
                 {
-                    test: /\.(png|svg|jpg|gif)$/,
-                    use: 'file-loader'
+                    test: /\.(png|svg|jpg|jpeg|gif)$/,
+                    use: {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'images/',
+                            publicPath: 'Scripts/dist/images/'
+                        }
+                    }
                 },
                 {
+                    // Правило для всех шрифтов включая Summernote
                     test: /\.(woff|woff2|eot|ttf|otf)$/,
-                    use: [
-                        'file-loader'
-                    ]
+                    use: {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 50000, // Увеличиваем лимит для шрифтов Summernote
+                            fallback: 'file-loader',
+                            name: '[name].[ext]',
+                            outputPath: 'fonts/',
+                            publicPath: '../fonts/', // Важно: относительный путь для CSS
+                            esModule: false
+                        }
+                    }
                 }
             ]
         },
         plugins: plugins,
         //pretty terminal output
-        stats: { colors: true }
+        stats: { colors: true },
+
+        // Оптимизация для продакшена
+        optimization: isProduction ? {
+            minimize: true,
+            splitChunks: {
+                chunks: 'all',
+                cacheGroups: {
+                    vendor: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendors',
+                        chunks: 'all',
+                    }
+                }
+            }
+        } : {},
+        
+        // Настройки для лучшей производительности
+        performance: {
+            hints: isProduction ? "warning" : false,
+            maxEntrypointSize: 512000,
+            maxAssetSize: 512000
+        }
     };
 };
